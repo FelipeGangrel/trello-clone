@@ -1,3 +1,5 @@
+import { Footer, Navbar } from './_components'
+
 type LayoutProps = {
   readonly children: React.ReactNode
 }
@@ -5,9 +7,9 @@ type LayoutProps = {
 const LandingLayout = ({ children }: LayoutProps) => {
   return (
     <div className="h-full bg-slate-100">
-      {/* Navbar */}
-      <main className="bg-slate-100 pb-20 pt-40">{children}</main>
-      {/* Footer */}
+      <Navbar />
+      <main className="pb-20 pt-40">{children}</main>
+      <Footer />
     </div>
   )
 }
