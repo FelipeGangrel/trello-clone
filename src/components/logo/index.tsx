@@ -8,8 +8,8 @@ const Logo = () => {
   return (
     <div className="logo">
       <Link href="/">
-        <div className="hidden items-center transition hover:opacity-75 md:flex">
-          <Image src="/images/logo.png" width={30} height={30} alt="logo" />
+        <div className="hidden items-center gap-x-2 transition hover:opacity-75 md:flex">
+          <Image src="/images/logo.svg" width={30} height={30} alt="logo" />
           <p
             className={cn(
               'pb-1 text-lg text-neutral-700',
