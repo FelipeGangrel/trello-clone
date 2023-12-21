@@ -35,6 +35,7 @@ const Navbar = () => {
             }}
           />
           <UserButton
+            afterSignOutUrl="/"
             appearance={{
               elements: {
                 userButtonTrigger: 'focus-ring focus:shadow-none',
