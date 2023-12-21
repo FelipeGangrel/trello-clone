@@ -1,4 +1,4 @@
-import { authMiddleware } from '@clerk/nextjs'
+import { authMiddleware, redirectToSignIn } from '@clerk/nextjs'
 import { NextResponse } from 'next/server'
 
 import { frontend } from '@/lib/routes'
@@ -9,6 +9,7 @@ import { frontend } from '@/lib/routes'
 export default authMiddleware({
   publicRoutes: ['/'],
   afterAuth: (auth, req) => {
+    // if logged in and in public route
     if (auth.userId && auth.isPublicRoute) {
       let path = frontend.selectOrganization()
 
@@ -18,6 +19,21 @@ export default authMiddleware({
 
       const orgSelection = new URL(path, req.url)
 
+      return NextResponse.redirect(orgSelection)
+    }
+
+    // if not logged in and not in public route
+    if (!auth.userId && !auth.isPublicRoute) {
+      return redirectToSignIn({ returnBackUrl: req.url })
+    }
+
+    // if select and org is not selected we redirect to select org
+    if (
+      auth.userId &&
+      !auth.orgId &&
+      req.nextUrl.pathname !== frontend.selectOrganization()
+    ) {
+      const orgSelection = new URL(frontend.selectOrganization(), req.url)
       return NextResponse.redirect(orgSelection)
     }
   },
