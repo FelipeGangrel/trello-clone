@@ -1,5 +1,5 @@
 type LayoutProps = {
-  readonly children: React.ReactNode
+  children: React.ReactNode
 }
 
 const ClerkLayout: React.FC<LayoutProps> = ({ children }) => {
