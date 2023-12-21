@@ -1,5 +1,5 @@
 import { OrganizationSwitcher, UserButton } from '@clerk/nextjs'
-import { Plus } from 'lucide-react'
+import { PlusIcon } from 'lucide-react'
 
 import { Logo } from '@/components/logo'
 import { Button } from '@/components/ui'
@@ -13,11 +13,11 @@ const Navbar = () => {
         <div className="hidden md:flex">
           <Logo />
         </div>
-        <Button size="xs" className="hidden md:block">
+        <Button size="xs" variant="brand" className="hidden md:block">
           Create
         </Button>
-        <Button className="block md:hidden">
-          <Plus size={16} />
+        <Button size="icon" variant="brand" className="inline-flex md:hidden">
+          <PlusIcon />
         </Button>
         <div className="ml-auto flex items-center gap-x-4">
           <OrganizationSwitcher
