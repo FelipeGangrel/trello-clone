@@ -21,11 +21,11 @@ const metadata: Metadata = {
   ],
 }
 
-type RootLayoutProps = {
-  readonly children: React.ReactNode
+type LayoutProps = {
+  children: React.ReactNode
 }
 
-const RootLayout = ({ children }: RootLayoutProps) => {
+const RootLayout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <html lang="en">
       <body className={inter.className}>{children}</body>

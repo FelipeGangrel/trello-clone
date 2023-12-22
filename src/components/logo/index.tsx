@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
 const Logo = () => {
   return (
     <div className="logo">
-      <Link href="/">
+      <Link href="/" className="focus-ring inline-block rounded-sm">
         <div className="hidden items-center gap-x-2 transition hover:opacity-75 md:flex">
           <Image src="/images/logo.svg" width={30} height={30} alt="logo" />
           <p
