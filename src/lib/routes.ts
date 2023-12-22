@@ -1,4 +1,4 @@
-const frontend = {
+export const frontend = {
   signIn: () => process.env.NEXT_PUBLIC_CLERK_SIGN_IN_URL,
   signUp: () => process.env.NEXT_PUBLIC_CLERK_SIGN_UP_URL,
   selectOrganization: () => '/select-org',
@@ -7,5 +7,3 @@ const frontend = {
   organizationSettings: (id: string) => `/organization/${id}/settings`,
   organizationBilling: (id: string) => `/organization/${id}/billing`,
 }
-
-export { frontend }
