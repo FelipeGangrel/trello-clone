@@ -32,6 +32,7 @@ specifiers:
   tailwindcss-animate: ^1.0.7
   typescript: ^5
   usehooks-ts: ^2.9.1
+  zod: ^3.22.4
   zustand: ^4.4.7
 
 dependencies:
@@ -51,6 +52,7 @@ dependencies:
   tailwind-merge: 2.1.0
   tailwindcss-animate: 1.0.7_tailwindcss@3.4.0
   usehooks-ts: 2.9.1_biqbaboplfbrettd7655fr4n2y
+  zod: 3.22.4
   zustand: 4.4.7_qinpt5tsrh57s4kh6guy25fqdq
 
 devDependencies:
@@ -4123,6 +4125,10 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /zod/3.22.4:
+    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
+    dev: false
 
   /zustand/4.4.7_qinpt5tsrh57s4kh6guy25fqdq:
     resolution: {integrity: sha512-QFJWJMdlETcI69paJwhSMJz7PPWjVP8Sjhclxmxmxv/RYI7ZOvR5BHX+ktH0we9gTWQMxcne8q1OY8xxz604gw==}
