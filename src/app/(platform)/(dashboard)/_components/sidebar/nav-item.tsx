@@ -9,7 +9,7 @@ import {
 import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 
-import { Accordion, Button } from '@/components/ui'
+import { Accordion, Button, Skeleton } from '@/components/ui'
 import { frontend } from '@/lib/routes'
 import { cn } from '@/lib/utils'
 
@@ -27,12 +27,12 @@ type NavItemProps = {
   onExpand: (id: string) => void
 }
 
-const NavItem: React.FC<NavItemProps> = ({
+const NavItem = ({
   organization,
   onExpand,
   isActive,
   isExpanded,
-}) => {
+}: NavItemProps) => {
   const router = useRouter()
   const pathname = usePathname()
 
@@ -102,6 +102,17 @@ const NavItem: React.FC<NavItemProps> = ({
         ))}
       </Accordion.Content>
     </Accordion.Item>
+  )
+}
+
+NavItem.Skeleton = function SkeletonNavItem() {
+  return (
+    <div className="flex items-center gap-x-2">
+      <div className="relative h-10 w-10 shrink-0">
+        <Skeleton className="absolute h-full w-full" />
+      </div>
+      <Skeleton className="h-10 w-full" />
+    </div>
   )
 }
 
