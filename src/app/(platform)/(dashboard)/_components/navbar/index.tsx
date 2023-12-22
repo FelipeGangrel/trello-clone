@@ -7,7 +7,7 @@ import { frontend } from '@/lib/routes'
 
 import { MobileSidebar } from '../mobile-sidebar'
 
-const Navbar = () => {
+export const Navbar = () => {
   return (
     <nav className="out fixed top-0 z-50 w-full border-b bg-background shadow-sm">
       <div className="container flex h-14 items-center gap-x-4">
@@ -50,5 +50,3 @@ const Navbar = () => {
     </nav>
   )
 }
-
-export { Navbar }

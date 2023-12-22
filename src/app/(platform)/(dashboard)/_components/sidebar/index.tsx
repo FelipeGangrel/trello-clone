@@ -18,7 +18,7 @@ type SidebarProps = {
 
 type StorageState = Record<string, any>
 
-const Sidebar = ({
+export const Sidebar = ({
   storageKey = localStorageKeys.sidebarState,
 }: SidebarProps) => {
   const [expanded, setExpanded] = useLocalStorage<StorageState>(storageKey, {})
@@ -97,5 +97,3 @@ const Sidebar = ({
     </div>
   )
 }
-
-export { Sidebar }

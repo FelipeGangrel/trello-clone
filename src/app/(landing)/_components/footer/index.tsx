@@ -1,7 +1,7 @@
 import { Logo } from '@/components/logo'
 import { Button } from '@/components/ui'
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <div className="fixed bottom-0 w-full border-t bg-slate-100">
       <div className="container flex items-center justify-between py-4">
@@ -18,5 +18,3 @@ const Footer = () => {
     </div>
   )
 }
-
-export { Footer }

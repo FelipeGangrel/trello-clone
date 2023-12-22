@@ -4,7 +4,7 @@ import { useOrganizationList } from '@clerk/nextjs'
 import { useParams } from 'next/navigation'
 import { useEffect } from 'react'
 
-const OrgWatcher = () => {
+export const OrgWatcher = () => {
   const params = useParams()
   const { setActive } = useOrganizationList()
 
@@ -18,5 +18,3 @@ const OrgWatcher = () => {
 
   return null
 }
-
-export { OrgWatcher }

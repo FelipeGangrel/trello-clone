@@ -13,21 +13,21 @@ import { Accordion, Button, Skeleton } from '@/components/ui'
 import { frontend } from '@/lib/routes'
 import { cn } from '@/lib/utils'
 
-type Organization = {
+export type Organization = {
   id: string
   slug: string
   imageUrl: string
   name: string
 }
 
-type NavItemProps = {
+export type NavItemProps = {
   organization: Organization
   isActive: boolean
   isExpanded: boolean
   onExpand: (id: string) => void
 }
 
-const NavItem = ({
+export const NavItem = ({
   organization,
   onExpand,
   isActive,
@@ -115,6 +115,3 @@ NavItem.Skeleton = function SkeletonNavItem() {
     </div>
   )
 }
-
-export { NavItem }
-export type { NavItemProps, Organization }

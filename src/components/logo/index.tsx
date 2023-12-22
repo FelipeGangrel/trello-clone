@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { headingFont } from '@/fonts'
 import { cn } from '@/lib/utils'
 
-const Logo = () => {
+export const Logo = () => {
   return (
     <div className="logo">
       <Link href="/" className="focus-ring inline-block rounded-sm">
@@ -23,5 +23,3 @@ const Logo = () => {
     </div>
   )
 }
-
-export { Logo }

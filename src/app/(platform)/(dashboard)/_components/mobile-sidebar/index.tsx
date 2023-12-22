@@ -10,7 +10,7 @@ import { useMobileSidebar } from '@/hooks'
 
 import { Sidebar } from '..'
 
-const MobileSidebar = () => {
+export const MobileSidebar = () => {
   const pathname = usePathname()
   const [isMounted, setIsMounted] = useState(false)
 
@@ -46,5 +46,3 @@ const MobileSidebar = () => {
     </>
   )
 }
-
-export { MobileSidebar }
