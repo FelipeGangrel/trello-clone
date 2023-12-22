@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@clerk/nextjs': ^4.29.0
   '@radix-ui/react-accordion': ^1.1.2
+  '@radix-ui/react-dialog': ^1.0.5
   '@radix-ui/react-dropdown-menu': ^2.0.6
   '@radix-ui/react-separator': ^1.0.3
   '@radix-ui/react-slot': ^1.0.2
@@ -22,6 +23,7 @@ specifiers:
   postcss: ^8
   prettier: ^3.1.1
   prettier-plugin-tailwindcss: ^0.5.9
+  prisma: ^5.7.1
   react: ^18
   react-dom: ^18
   tailwind-merge: ^2.1.0
@@ -29,10 +31,12 @@ specifiers:
   tailwindcss-animate: ^1.0.7
   typescript: ^5
   usehooks-ts: ^2.9.1
+  zustand: ^4.4.7
 
 dependencies:
   '@clerk/nextjs': 4.29.0_hhw7wgihwfazgzbvi55hs2pcf4
   '@radix-ui/react-accordion': 1.1.2_y25r3j74y2ixp3wwje7zxg74ra
+  '@radix-ui/react-dialog': 1.0.5_y25r3j74y2ixp3wwje7zxg74ra
   '@radix-ui/react-dropdown-menu': 2.0.6_y25r3j74y2ixp3wwje7zxg74ra
   '@radix-ui/react-separator': 1.0.3_y25r3j74y2ixp3wwje7zxg74ra
   '@radix-ui/react-slot': 1.0.2_qinpt5tsrh57s4kh6guy25fqdq
@@ -45,6 +49,7 @@ dependencies:
   tailwind-merge: 2.1.0
   tailwindcss-animate: 1.0.7_tailwindcss@3.4.0
   usehooks-ts: 2.9.1_biqbaboplfbrettd7655fr4n2y
+  zustand: 4.4.7_qinpt5tsrh57s4kh6guy25fqdq
 
 devDependencies:
   '@types/node': 20.10.5
@@ -59,6 +64,7 @@ devDependencies:
   postcss: 8.4.32
   prettier: 3.1.1
   prettier-plugin-tailwindcss: 0.5.9_prettier@3.1.1
+  prisma: 5.7.1
   tailwindcss: 3.4.0
   typescript: 5.3.3
 
@@ -423,6 +429,38 @@ packages:
       tslib: 2.6.2
     dev: true
 
+  /@prisma/debug/5.7.1:
+    resolution: {integrity: sha512-yrVSO/YZOxdeIxcBtZ5BaNqUfPrZkNsAKQIQg36cJKMxj/VYK3Vk5jMKkI+gQLl0KReo1YvX8GWKfV788SELjw==}
+    dev: true
+
+  /@prisma/engines-version/5.7.1-1.0ca5ccbcfa6bdc81c003cf549abe4269f59c41e5:
+    resolution: {integrity: sha512-dIR5IQK/ZxEoWRBDOHF87r1Jy+m2ih3Joi4vzJRP+FOj5yxCwS2pS5SBR3TWoVnEK1zxtLI/3N7BjHyGF84fgw==}
+    dev: true
+
+  /@prisma/engines/5.7.1:
+    resolution: {integrity: sha512-R+Pqbra8tpLP2cvyiUpx+SIKglav3nTCpA+rn6826CThviQ8yvbNG0s8jNpo51vS9FuZO3pOkARqG062vKX7uA==}
+    requiresBuild: true
+    dependencies:
+      '@prisma/debug': 5.7.1
+      '@prisma/engines-version': 5.7.1-1.0ca5ccbcfa6bdc81c003cf549abe4269f59c41e5
+      '@prisma/fetch-engine': 5.7.1
+      '@prisma/get-platform': 5.7.1
+    dev: true
+
+  /@prisma/fetch-engine/5.7.1:
+    resolution: {integrity: sha512-9ELauIEBkIaEUpMIYPRlh5QELfoC6pyHolHVQgbNxglaINikZ9w9X7r1TIePAcm05pCNp2XPY1ObQIJW5nYfBQ==}
+    dependencies:
+      '@prisma/debug': 5.7.1
+      '@prisma/engines-version': 5.7.1-1.0ca5ccbcfa6bdc81c003cf549abe4269f59c41e5
+      '@prisma/get-platform': 5.7.1
+    dev: true
+
+  /@prisma/get-platform/5.7.1:
+    resolution: {integrity: sha512-eDlswr3a1m5z9D/55Iyt/nZqS5UpD+DZ9MooBB3hvrcPhDQrcf9m4Tl7buy4mvAtrubQ626ECtb8c6L/f7rGSQ==}
+    dependencies:
+      '@prisma/debug': 5.7.1
+    dev: true
+
   /@radix-ui/primitive/1.0.1:
     resolution: {integrity: sha512-yQ8oGX2GVsEYMWGxcovu1uGWPCxV5BFfeeYxqPmuAzUyLT9qmaMXSAhXpb0WrspIeqYzdJpkh2vHModJPgRIaw==}
     dependencies:
@@ -557,6 +595,40 @@ packages:
       '@babel/runtime': 7.23.6
       '@types/react': 18.2.45
       react: 18.2.0
+    dev: false
+
+  /@radix-ui/react-dialog/1.0.5_y25r3j74y2ixp3wwje7zxg74ra:
+    resolution: {integrity: sha512-GjWJX/AUpB703eEBanuBnIWdIXg6NvJFCXcNlSZk4xdszCdhrJgBoUd1cGk67vFO+WdA2pfI/plOpqz/5GUP6Q==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.23.6
+      '@radix-ui/primitive': 1.0.1
+      '@radix-ui/react-compose-refs': 1.0.1_qinpt5tsrh57s4kh6guy25fqdq
+      '@radix-ui/react-context': 1.0.1_qinpt5tsrh57s4kh6guy25fqdq
+      '@radix-ui/react-dismissable-layer': 1.0.5_y25r3j74y2ixp3wwje7zxg74ra
+      '@radix-ui/react-focus-guards': 1.0.1_qinpt5tsrh57s4kh6guy25fqdq
+      '@radix-ui/react-focus-scope': 1.0.4_y25r3j74y2ixp3wwje7zxg74ra
+      '@radix-ui/react-id': 1.0.1_qinpt5tsrh57s4kh6guy25fqdq
+      '@radix-ui/react-portal': 1.0.4_y25r3j74y2ixp3wwje7zxg74ra
+      '@radix-ui/react-presence': 1.0.1_y25r3j74y2ixp3wwje7zxg74ra
+      '@radix-ui/react-primitive': 1.0.3_y25r3j74y2ixp3wwje7zxg74ra
+      '@radix-ui/react-slot': 1.0.2_qinpt5tsrh57s4kh6guy25fqdq
+      '@radix-ui/react-use-controllable-state': 1.0.1_qinpt5tsrh57s4kh6guy25fqdq
+      '@types/react': 18.2.45
+      '@types/react-dom': 18.2.18
+      aria-hidden: 1.2.3
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-remove-scroll: 2.5.5_qinpt5tsrh57s4kh6guy25fqdq
     dev: false
 
   /@radix-ui/react-direction/1.0.1_qinpt5tsrh57s4kh6guy25fqdq:
@@ -3246,6 +3318,15 @@ packages:
     hasBin: true
     dev: true
 
+  /prisma/5.7.1:
+    resolution: {integrity: sha512-ekho7ziH0WEJvC4AxuJz+ewRTMskrebPcrKuBwcNzVDniYxx+dXOGcorNeIb9VEMO5vrKzwNYvhD271Ui2jnNw==}
+    engines: {node: '>=16.13'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      '@prisma/engines': 5.7.1
+    dev: true
+
   /prop-types/15.8.1:
     resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
     dependencies:
@@ -4033,3 +4114,23 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /zustand/4.4.7_qinpt5tsrh57s4kh6guy25fqdq:
+    resolution: {integrity: sha512-QFJWJMdlETcI69paJwhSMJz7PPWjVP8Sjhclxmxmxv/RYI7ZOvR5BHX+ktH0we9gTWQMxcne8q1OY8xxz604gw==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      '@types/react': '>=16.8'
+      immer: '>=9.0'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      immer:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      '@types/react': 18.2.45
+      react: 18.2.0
+      use-sync-external-store: 1.2.0_react@18.2.0
+    dev: false

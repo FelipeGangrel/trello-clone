@@ -4,7 +4,7 @@ type LayoutProps = {
   children: React.ReactNode
 }
 
-const LandingLayout: React.FC<LayoutProps> = ({ children }) => {
+const LandingLayout = ({ children }: LayoutProps) => {
   return (
     <div className="h-full bg-slate-100">
       <Navbar />

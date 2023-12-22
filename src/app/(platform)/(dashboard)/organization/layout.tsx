@@ -4,7 +4,7 @@ type LayoutProps = {
   children: React.ReactNode
 }
 
-const OrganizationLayout: React.FC<LayoutProps> = ({ children }) => {
+const OrganizationLayout = ({ children }: LayoutProps) => {
   return (
     <main className="container pt-20 md:pt-24">
       <div className="flex gap-x-7">

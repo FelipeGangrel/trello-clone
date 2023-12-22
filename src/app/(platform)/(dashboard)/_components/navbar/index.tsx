@@ -5,11 +5,13 @@ import { Logo } from '@/components/logo'
 import { Button } from '@/components/ui'
 import { frontend } from '@/lib/routes'
 
+import { MobileSidebar } from '../mobile-sidebar'
+
 const Navbar = () => {
   return (
     <nav className="out fixed top-0 z-50 w-full border-b bg-background shadow-sm">
-      {/* TODO: Create mobile sidebar */}
       <div className="container flex h-14 items-center gap-x-4">
+        <MobileSidebar />
         <div className="hidden md:flex">
           <Logo />
         </div>
