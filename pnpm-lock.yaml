@@ -29,6 +29,7 @@ specifiers:
   tailwindcss-animate: ^1.0.7
   typescript: ^5
   usehooks-ts: ^2.9.1
+  zustand: ^4.4.7
 
 dependencies:
   '@clerk/nextjs': 4.29.0_hhw7wgihwfazgzbvi55hs2pcf4
@@ -45,6 +46,7 @@ dependencies:
   tailwind-merge: 2.1.0
   tailwindcss-animate: 1.0.7_tailwindcss@3.4.0
   usehooks-ts: 2.9.1_biqbaboplfbrettd7655fr4n2y
+  zustand: 4.4.7_qinpt5tsrh57s4kh6guy25fqdq
 
 devDependencies:
   '@types/node': 20.10.5
@@ -4033,3 +4035,23 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /zustand/4.4.7_qinpt5tsrh57s4kh6guy25fqdq:
+    resolution: {integrity: sha512-QFJWJMdlETcI69paJwhSMJz7PPWjVP8Sjhclxmxmxv/RYI7ZOvR5BHX+ktH0we9gTWQMxcne8q1OY8xxz604gw==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      '@types/react': '>=16.8'
+      immer: '>=9.0'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      immer:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      '@types/react': 18.2.45
+      react: 18.2.0
+      use-sync-external-store: 1.2.0_react@18.2.0
+    dev: false
