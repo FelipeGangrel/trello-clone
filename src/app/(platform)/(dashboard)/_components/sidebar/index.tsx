@@ -18,9 +18,9 @@ type SidebarProps = {
 
 type StorageState = Record<string, any>
 
-const Sidebar: React.FC<SidebarProps> = ({
+const Sidebar = ({
   storageKey = localStorageKeys.sidebarState,
-}) => {
+}: SidebarProps) => {
   const [expanded, setExpanded] = useLocalStorage<StorageState>(storageKey, {})
 
   const { organization: activeOrg, isLoaded: isOrgLoaded } = useOrganization()

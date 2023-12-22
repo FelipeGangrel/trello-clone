@@ -4,7 +4,7 @@ type LayoutProps = {
   children: React.ReactNode
 }
 
-const OrganizationIdLayout: React.FC<LayoutProps> = ({ children }) => {
+const OrganizationIdLayout = ({ children }: LayoutProps) => {
   return (
     <>
       <OrgWatcher />

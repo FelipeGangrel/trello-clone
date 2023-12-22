@@ -4,7 +4,7 @@ type LayoutProps = {
   children: React.ReactNode
 }
 
-const DashboardLayout: React.FC<LayoutProps> = ({ children }) => {
+const DashboardLayout = ({ children }: LayoutProps) => {
   return (
     <div className="min-h-screen">
       <Navbar />

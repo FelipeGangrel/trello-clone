@@ -4,7 +4,7 @@ type LayoutProps = {
   children: React.ReactNode
 }
 
-const PlatformLayout: React.FC<LayoutProps> = ({ children }) => {
+const PlatformLayout = ({ children }: LayoutProps) => {
   return <ClerkProvider>{children}</ClerkProvider>
 }
 

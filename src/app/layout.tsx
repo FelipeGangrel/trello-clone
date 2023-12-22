@@ -25,7 +25,7 @@ type LayoutProps = {
   children: React.ReactNode
 }
 
-const RootLayout: React.FC<LayoutProps> = ({ children }) => {
+const RootLayout = ({ children }: LayoutProps) => {
   return (
     <html lang="en">
       <body className={inter.className}>{children}</body>
