@@ -1,6 +1,7 @@
 'use client'
 
 import { XIcon } from 'lucide-react'
+import { toast } from 'sonner'
 
 import { createBoard } from '@/actions/create-board'
 import { FormField, SubmitButton } from '@/components/form'
@@ -22,7 +23,10 @@ export const CreateBoardPopover = ({
 }: FormPopoverProps) => {
   const { execute, fieldErrors } = useAction(createBoard, {
     onSuccess: (data) => {
-      console.log(data)
+      toast.success(`Board "${data.title}" created!`)
+    },
+    onError: (error) => {
+      toast.error(error)
     },
   })
 
