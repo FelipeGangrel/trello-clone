@@ -19,7 +19,7 @@ export const useAction = <TInput, TOutput>(
   const [fieldErrors, setFieldErrors] = useState<
     FieldErrors<TInput> | undefined
   >(undefined)
-  const [errorMessage, setErrorMessage] = useState<string | undefined>(
+  const [errorMessage, setErrorMessage] = useState<string | null | undefined>(
     undefined
   )
   const [data, setData] = useState<TOutput | undefined>(undefined)
@@ -36,24 +36,16 @@ export const useAction = <TInput, TOutput>(
           return
         }
 
-        if (result.fieldErrors) {
-          setFieldErrors(result.fieldErrors)
-        } else {
-          setFieldErrors(undefined)
-        }
+        setFieldErrors(result.fieldErrors)
+        setErrorMessage(result.errorMessage)
+        setData(result.data)
 
         if (result.errorMessage) {
-          setErrorMessage(result.errorMessage)
           options?.onError?.(result.errorMessage)
-        } else {
-          setErrorMessage(undefined)
         }
 
         if (result.data) {
-          setData(result.data)
           options?.onSuccess?.(result.data)
-        } else {
-          setData(undefined)
         }
       } finally {
         setIsLoading(false)
