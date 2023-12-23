@@ -6,4 +6,5 @@ export const frontend = {
   organizationActivity: (id: string) => `/organization/${id}/activity`,
   organizationSettings: (id: string) => `/organization/${id}/settings`,
   organizationBilling: (id: string) => `/organization/${id}/billing`,
+  board: (id: string) => `/board/${id}`,
 }
