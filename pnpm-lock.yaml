@@ -30,6 +30,7 @@ specifiers:
   prisma: ^5.7.1
   react: ^18
   react-dom: ^18
+  sonner: ^1.2.4
   tailwind-merge: ^2.1.0
   tailwindcss: ^3.3.0
   tailwindcss-animate: ^1.0.7
@@ -55,6 +56,7 @@ dependencies:
   next: 14.0.4_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  sonner: 1.2.4_biqbaboplfbrettd7655fr4n2y
   tailwind-merge: 2.1.0
   tailwindcss-animate: 1.0.7_tailwindcss@3.4.0
   usehooks-ts: 2.9.1_biqbaboplfbrettd7655fr4n2y
@@ -3749,6 +3751,16 @@ packages:
       map-obj: 4.3.0
       snake-case: 3.0.4
       type-fest: 2.19.0
+    dev: false
+
+  /sonner/1.2.4_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-WGLP2QQnomgewaCTsK7YWiLcy5n1Yj83vsL5cP4zHMmpSkmFsCYTpQKhlXJrPE5kzjwbqCkCFXcOpbKc4vaUaA==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /source-map-js/1.0.2:
