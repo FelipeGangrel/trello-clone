@@ -7,6 +7,7 @@ specifiers:
   '@radix-ui/react-dialog': ^1.0.5
   '@radix-ui/react-dropdown-menu': ^2.0.6
   '@radix-ui/react-label': ^2.0.2
+  '@radix-ui/react-popover': ^1.0.7
   '@radix-ui/react-separator': ^1.0.3
   '@radix-ui/react-slot': ^1.0.2
   '@radix-ui/react-tooltip': ^1.0.7
@@ -44,6 +45,7 @@ dependencies:
   '@radix-ui/react-dialog': 1.0.5_y25r3j74y2ixp3wwje7zxg74ra
   '@radix-ui/react-dropdown-menu': 2.0.6_y25r3j74y2ixp3wwje7zxg74ra
   '@radix-ui/react-label': 2.0.2_y25r3j74y2ixp3wwje7zxg74ra
+  '@radix-ui/react-popover': 1.0.7_y25r3j74y2ixp3wwje7zxg74ra
   '@radix-ui/react-separator': 1.0.3_y25r3j74y2ixp3wwje7zxg74ra
   '@radix-ui/react-slot': 1.0.2_qinpt5tsrh57s4kh6guy25fqdq
   '@radix-ui/react-tooltip': 1.0.7_y25r3j74y2ixp3wwje7zxg74ra
@@ -816,6 +818,41 @@ packages:
       '@radix-ui/react-roving-focus': 1.0.4_y25r3j74y2ixp3wwje7zxg74ra
       '@radix-ui/react-slot': 1.0.2_qinpt5tsrh57s4kh6guy25fqdq
       '@radix-ui/react-use-callback-ref': 1.0.1_qinpt5tsrh57s4kh6guy25fqdq
+      '@types/react': 18.2.45
+      '@types/react-dom': 18.2.18
+      aria-hidden: 1.2.3
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-remove-scroll: 2.5.5_qinpt5tsrh57s4kh6guy25fqdq
+    dev: false
+
+  /@radix-ui/react-popover/1.0.7_y25r3j74y2ixp3wwje7zxg74ra:
+    resolution: {integrity: sha512-shtvVnlsxT6faMnK/a7n0wptwBD23xc1Z5mdrtKLwVEfsEMXodS0r5s0/g5P0hX//EKYZS2sxUjqfzlg52ZSnQ==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.23.6
+      '@radix-ui/primitive': 1.0.1
+      '@radix-ui/react-compose-refs': 1.0.1_qinpt5tsrh57s4kh6guy25fqdq
+      '@radix-ui/react-context': 1.0.1_qinpt5tsrh57s4kh6guy25fqdq
+      '@radix-ui/react-dismissable-layer': 1.0.5_y25r3j74y2ixp3wwje7zxg74ra
+      '@radix-ui/react-focus-guards': 1.0.1_qinpt5tsrh57s4kh6guy25fqdq
+      '@radix-ui/react-focus-scope': 1.0.4_y25r3j74y2ixp3wwje7zxg74ra
+      '@radix-ui/react-id': 1.0.1_qinpt5tsrh57s4kh6guy25fqdq
+      '@radix-ui/react-popper': 1.1.3_y25r3j74y2ixp3wwje7zxg74ra
+      '@radix-ui/react-portal': 1.0.4_y25r3j74y2ixp3wwje7zxg74ra
+      '@radix-ui/react-presence': 1.0.1_y25r3j74y2ixp3wwje7zxg74ra
+      '@radix-ui/react-primitive': 1.0.3_y25r3j74y2ixp3wwje7zxg74ra
+      '@radix-ui/react-slot': 1.0.2_qinpt5tsrh57s4kh6guy25fqdq
+      '@radix-ui/react-use-controllable-state': 1.0.1_qinpt5tsrh57s4kh6guy25fqdq
       '@types/react': 18.2.45
       '@types/react-dom': 18.2.18
       aria-hidden: 1.2.3
