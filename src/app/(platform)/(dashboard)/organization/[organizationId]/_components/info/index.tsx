@@ -21,6 +21,7 @@ export const Info = ({}: InfoProps) => {
         <div className="relative h-[60px] w-[60px]">
           <Image
             fill
+            priority
             sizes="60px"
             src={organization.imageUrl}
             alt="Organization"
