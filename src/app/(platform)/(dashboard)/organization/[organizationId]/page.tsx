@@ -1,7 +1,9 @@
-const OrganizationPage = () => {
+import { Info } from './_components'
+
+const OrganizationPage = async () => {
   return (
-    <div>
-      <h1>Organization page</h1>
+    <div className="mb-20 w-full">
+      <Info />
     </div>
   )
 }
