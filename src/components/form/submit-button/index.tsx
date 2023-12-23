@@ -7,13 +7,13 @@ export type SubmitButtonProps = ButtonProps
 
 export const SubmitButton = forwardRef<HTMLButtonElement, SubmitButtonProps>(
   (props, ref) => {
-    const { children, disabled, ...buttonProps } = props
+    const { children, disabled, type = 'submit', ...buttonProps } = props
     const { pending } = useFormStatus()
 
     return (
       <Button
         ref={ref}
-        type="submit"
+        type={type}
         disabled={pending || disabled}
         {...buttonProps}
       >
