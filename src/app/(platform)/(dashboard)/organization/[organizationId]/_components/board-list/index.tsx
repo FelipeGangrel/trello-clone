@@ -2,7 +2,7 @@
 
 import { HelpCircleIcon, User2Icon } from 'lucide-react'
 
-import { CreateBoardPopover } from '@/components/create-board-popover'
+import { CreateBoardPopover } from '@/components/dashboard'
 import { Hint } from '@/components/hint'
 
 export const BoardList = async () => {

@@ -7,6 +7,9 @@ import { createBoard } from '@/actions/create-board'
 import { FormField, SubmitButton } from '@/components/form'
 import { Button, Popover } from '@/components/ui'
 import { useAction } from '@/hooks'
+import { parseImageString } from '@/lib/unsplash'
+
+import { BoardImagePicker } from './board-image-picker'
 
 export type FormPopoverProps = {
   children: React.ReactNode
@@ -32,7 +35,9 @@ export const CreateBoardPopover = ({
 
   const handleFormAction = (formData: FormData) => {
     const title = formData.get('title') as string
-    execute({ title })
+    const image = formData.get('image') as string
+
+    // execute({ title })
   }
 
   return (
@@ -42,7 +47,7 @@ export const CreateBoardPopover = ({
         align={align}
         side={side}
         sideOffset={sideOffset}
-        className="w-80 pt-3"
+        className="w-96 pt-3"
       >
         <div className="pb-4 text-center text-sm font-medium text-neutral-600">
           Create board
@@ -58,6 +63,7 @@ export const CreateBoardPopover = ({
         </Popover.Close>
         <form action={handleFormAction} className="space-y-4">
           <div className="space-y-4">
+            <BoardImagePicker id="image" errors={fieldErrors} />
             <FormField
               id="title"
               label="title"
