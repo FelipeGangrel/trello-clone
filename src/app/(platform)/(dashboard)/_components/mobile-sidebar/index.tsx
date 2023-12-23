@@ -5,8 +5,8 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 import { Button, Sheet } from '@/components/ui'
-import { localStorageKeys } from '@/config/local-storage-keys'
 import { useMobileSidebar } from '@/hooks'
+import { localStorageKeys } from '@/lib/local-storage'
 
 import { Sidebar } from '..'
 

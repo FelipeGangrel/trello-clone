@@ -3,11 +3,11 @@
 import { useOrganization, useOrganizationList } from '@clerk/nextjs'
 import { PlusIcon } from 'lucide-react'
 import Link from 'next/link'
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { useLocalStorage } from 'usehooks-ts'
 
-import { Accordion, Button, Separator, Skeleton } from '@/components/ui'
-import { localStorageKeys } from '@/config/local-storage-keys'
+import { Accordion, Button, Skeleton } from '@/components/ui'
+import { localStorageKeys } from '@/lib/local-storage'
 import { frontend } from '@/lib/routes'
 
 import { NavItem, Organization } from './nav-item'
