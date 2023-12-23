@@ -39,22 +39,22 @@ export const NavItem = ({
   const routes = [
     {
       label: 'Boards',
-      icon: <LayoutIcon size={16} className="mr-2" />,
+      icon: <LayoutIcon className="mr-2 h-4 w-4" />,
       href: frontend.organization(organization.id),
     },
     {
       label: 'Activity',
-      icon: <ActivityIcon size={16} className="mr-2" />,
+      icon: <ActivityIcon className="mr-2 h-4 w-4" />,
       href: frontend.organizationActivity(organization.id),
     },
     {
       label: 'Settings',
-      icon: <SettingsIcon size={16} className="mr-2" />,
+      icon: <SettingsIcon className="mr-2 h-4 w-4" />,
       href: frontend.organizationSettings(organization.id),
     },
     {
       label: 'Billing',
-      icon: <CreditCardIcon size={16} className="mr-2" />,
+      icon: <CreditCardIcon className="mr-2 h-4 w-4" />,
       href: frontend.organizationBilling(organization.id),
     },
   ]
@@ -76,6 +76,7 @@ export const NavItem = ({
           <div className="relative h-7 w-7">
             <Image
               fill
+              sizes="28px"
               src={organization.imageUrl}
               alt="Organization"
               className="rounded-sm object-cover"
@@ -105,7 +106,7 @@ export const NavItem = ({
   )
 }
 
-NavItem.Skeleton = function SkeletonNavItem() {
+NavItem.Skeleton = function NavItemSkeleton() {
   return (
     <div className="flex items-center gap-x-2">
       <div className="relative h-10 w-10 shrink-0">

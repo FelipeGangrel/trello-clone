@@ -75,7 +75,7 @@ export const Sidebar = ({
           className="ml-auto"
         >
           <Link href={frontend.selectOrganization()}>
-            <PlusIcon size={16} />
+            <PlusIcon className="h-4 w-4" />
           </Link>
         </Button>
       </div>
