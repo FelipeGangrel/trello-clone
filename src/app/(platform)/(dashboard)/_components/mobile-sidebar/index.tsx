@@ -36,7 +36,7 @@ export const MobileSidebar = () => {
         variant="ghost"
         className="mr-2 flex md:hidden"
       >
-        <MenuIcon size={16} />
+        <MenuIcon className="h-4 w-4" />
       </Button>
       <Sheet.Root open={isOpen} onOpenChange={onClose}>
         <Sheet.Content side="left" className="pb-2 pt-10">
