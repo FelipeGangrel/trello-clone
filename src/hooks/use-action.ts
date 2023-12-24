@@ -55,11 +55,18 @@ export const useAction = <TInput, TOutput>(
     [action, options]
   )
 
+  const reset = useCallback(() => {
+    setFieldErrors(undefined)
+    setErrorMessage(undefined)
+    setData(undefined)
+  }, [])
+
   return {
     fieldErrors,
     errorMessage,
     data,
     isLoading,
     execute,
+    reset,
   }
 }
