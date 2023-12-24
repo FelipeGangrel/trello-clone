@@ -32,10 +32,6 @@ export const List = ({ index, list }: ListProps) => {
     setIsEditing(false)
   }
 
-  const onAddCard = () => {
-    console.log('onAddCard')
-  }
-
   return (
     <Draggable draggableId={list.id} index={index}>
       {(provided) => (
@@ -48,7 +44,7 @@ export const List = ({ index, list }: ListProps) => {
             {...provided.dragHandleProps}
             className="w-full rounded-md bg-slate-50 pb-2 shadow-md"
           >
-            <ListHeader list={list} onAddCard={onAddCard} />
+            <ListHeader list={list} onAddCard={enableEditing} />
             <Droppable droppableId={list.id} type="card">
               {(provided) => (
                 <ol
