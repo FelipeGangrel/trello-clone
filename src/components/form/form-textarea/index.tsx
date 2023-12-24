@@ -32,8 +32,9 @@ export const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
             </Label>
           )}
           <Textarea
-            id={id}
             ref={ref}
+            id={id}
+            name={id}
             disabled={pending || disabled}
             {...textareaProps}
             className={cn(
