@@ -11,6 +11,7 @@ type FormTextareaProps = {
   label?: string
   errors?: Record<string, string[] | undefined>
   disabled?: boolean
+  placeholder?: string
 } & HTMLAttributes<HTMLTextAreaElement>
 
 export const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
