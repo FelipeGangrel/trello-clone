@@ -81,7 +81,7 @@ export const ListHeaderActions = ({
           onClick={onDuplicate}
           disabled={isDuplicating}
         >
-          Duplicate this list...
+          Duplicate this list
         </Button>
         <Separator className="my-4" />
         <Button variant="menu-action" onClick={onDelete} disabled={isDeleting}>
