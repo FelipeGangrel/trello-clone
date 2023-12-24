@@ -19,7 +19,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     }
   }
 
-  const { boardId, listId, title } = data
+  const { boardId, listId, title, description } = data
 
   let card
 
@@ -56,6 +56,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     card = await db.card.create({
       data: {
         title,
+        description,
         order: newOrder,
         listId,
       },
