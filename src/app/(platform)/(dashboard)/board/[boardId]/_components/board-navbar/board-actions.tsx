@@ -1,6 +1,6 @@
 'use client'
 
-import { MoreHorizontalIcon, XIcon } from 'lucide-react'
+import { MoreHorizontalIcon } from 'lucide-react'
 import { toast } from 'sonner'
 
 import { deleteBoard } from '@/actions/delete-board'
@@ -34,15 +34,7 @@ export const BoardActions = ({ boardId }: BoardActionsProps) => {
           <div className="pb-4 text-center text-sm font-medium text-neutral-600">
             <p>Board Actions</p>
           </div>
-          <Popover.Close asChild>
-            <Button
-              variant="ghost"
-              size="xs"
-              className="absolute right-2 top-2 text-neutral-600"
-            >
-              <XIcon className="h-4 w-4" />
-            </Button>
-          </Popover.Close>
+          <Popover.CloseButton />
           <Button
             variant="ghost"
             onClick={onDelete}

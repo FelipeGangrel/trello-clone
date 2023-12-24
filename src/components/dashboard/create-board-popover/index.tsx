@@ -1,13 +1,12 @@
 'use client'
 
-import { XIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { ElementRef, useRef } from 'react'
 import { toast } from 'sonner'
 
 import { createBoard } from '@/actions/create-board'
 import { FormField, SubmitButton } from '@/components/form'
-import { Button, Popover } from '@/components/ui'
+import { Popover } from '@/components/ui'
 import { useAction } from '@/hooks'
 import { frontend } from '@/lib/routes'
 
@@ -59,15 +58,7 @@ export const CreateBoardPopover = ({
         <div className="pb-4 text-center text-sm font-medium text-neutral-600">
           Create board
         </div>
-        <Popover.Close asChild ref={closeButtonRef} tabIndex={-1}>
-          <Button
-            variant="ghost"
-            size="xs"
-            className="absolute right-2 top-2 text-neutral-600"
-          >
-            <XIcon className="h-4 w-4" />
-          </Button>
-        </Popover.Close>
+        <Popover.CloseButton ref={closeButtonRef} tabIndex={-1} />
         <form action={handleFormAction} className="space-y-4">
           <div className="space-y-4">
             <BoardImagePicker id="image" errors={fieldErrors} />
