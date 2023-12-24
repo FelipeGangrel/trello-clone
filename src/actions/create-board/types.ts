@@ -1,5 +1,5 @@
-import { Board } from '@prisma/client'
-import * as z from 'zod'
+import type { Board } from '@prisma/client'
+import { z } from 'zod'
 
 import type { ActionState } from '@/lib/create-safe-action'
 
