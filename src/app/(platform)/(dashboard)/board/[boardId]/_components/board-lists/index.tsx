@@ -5,7 +5,7 @@ import {
   Droppable,
   OnDragEndResponder,
 } from '@hello-pangea/dnd'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import { ListWithCards } from '@/types/db'
 
@@ -17,6 +17,14 @@ type ListContainer = {
   lists: ListWithCards[]
 }
 
+function reorder<T>(list: T[], startIndex: number, endIndex: number): T[] {
+  const result = Array.from(list)
+  const [removed] = result.splice(startIndex, 1)
+  result.splice(endIndex, 0, removed)
+
+  return result
+}
+
 export const BoardLists = ({ boardId, lists }: ListContainer) => {
   const [orderedLists, setOrderedLists] = useState(lists)
 
@@ -24,109 +32,106 @@ export const BoardLists = ({ boardId, lists }: ListContainer) => {
     setOrderedLists(lists)
   }, [lists])
 
-  function reorder<T>(list: T[], startIndex: number, endIndex: number): T[] {
-    const result = Array.from(list)
-    const [removed] = result.splice(startIndex, 1)
-    result.splice(endIndex, 0, removed)
+  const onDragEnd: OnDragEndResponder = useCallback(
+    (result) => {
+      const { destination, source, type } = result
 
-    return result
-  }
-
-  const onDragEnd: OnDragEndResponder = (result) => {
-    const { destination, source, type } = result
-
-    if (!destination) {
-      return
-    }
-
-    // if dropped in the same position
-    if (
-      destination.droppableId === source.droppableId &&
-      destination.index === source.index
-    ) {
-      return
-    }
-
-    // if user moves a list
-    if (type === 'list') {
-      const items = reorder(orderedLists, source.index, destination.index).map(
-        (item, index) => ({ ...item, order: index })
-      )
-
-      setOrderedLists(items)
-      // TODO: update order in db
-    }
-
-    // if user moves a card
-    if (type === 'card') {
-      let newOrderedLists = [...orderedLists]
-
-      // source and destination list
-      const sourceList = newOrderedLists.find(
-        (list) => list.id === source.droppableId
-      )
-      const destinationList = newOrderedLists.find(
-        (list) => list.id === destination.droppableId
-      )
-
-      // if don't have source or destination list
-      if (!sourceList || !destinationList) {
+      if (!destination) {
         return
       }
 
-      // check if card exists in the source list
-      if (!sourceList.cards) {
-        sourceList.cards = []
+      // if dropped in the same position
+      if (
+        destination.droppableId === source.droppableId &&
+        destination.index === source.index
+      ) {
+        return
       }
 
-      // check if card exists in the destination list
-      if (!destinationList.cards) {
-        destinationList.cards = []
-      }
-
-      // moving the card in the same list
-      if (source.droppableId === destination.droppableId) {
-        const reorderedCards = reorder(
-          sourceList.cards,
+      // if user moves a list
+      if (type === 'list') {
+        const items = reorder(
+          orderedLists,
           source.index,
           destination.index
-        )
+        ).map((item, index) => ({ ...item, order: index }))
 
-        reorderedCards.forEach((card, index) => {
-          card.order = index
-        })
-
-        sourceList.cards = reorderedCards
-
-        setOrderedLists(newOrderedLists)
-        // TODO: update order in db
-
-        // user moves the card to another list
-      } else {
-        // remove card from the source list
-        const [movedCard] = sourceList.cards.splice(source.index, 1)
-
-        // assign the card to the destination list
-        movedCard.listId = destination.droppableId
-
-        // add the card to the destination list
-        destinationList.cards.splice(destination.index, 0, movedCard)
-
-        // update order in the source list
-        sourceList.cards.forEach((card, index) => {
-          card.order = index
-        })
-
-        // update order in the destination list
-        destinationList.cards.forEach((card, index) => {
-          card.order = index
-        })
-
-        setOrderedLists(newOrderedLists)
+        setOrderedLists(items)
         // TODO: update order in db
       }
-    }
-  }
+
+      // if user moves a card
+      if (type === 'card') {
+        let newOrderedLists = [...orderedLists]
+
+        // source and destination list
+        const sourceList = newOrderedLists.find(
+          (list) => list.id === source.droppableId
+        )
+        const destinationList = newOrderedLists.find(
+          (list) => list.id === destination.droppableId
+        )
+
+        // if don't have source or destination list
+        if (!sourceList || !destinationList) {
+          return
+        }
+
+        // check if card exists in the source list
+        if (!sourceList.cards) {
+          sourceList.cards = []
+        }
+
+        // check if card exists in the destination list
+        if (!destinationList.cards) {
+          destinationList.cards = []
+        }
+
+        // moving the card in the same list
+        if (source.droppableId === destination.droppableId) {
+          const reorderedCards = reorder(
+            sourceList.cards,
+            source.index,
+            destination.index
+          )
+
+          reorderedCards.forEach((card, index) => {
+            card.order = index
+          })
+
+          sourceList.cards = reorderedCards
+
+          setOrderedLists(newOrderedLists)
+          // TODO: update order in db
+
+          // user moves the card to another list
+        } else {
+          // remove card from the source list
+          const [movedCard] = sourceList.cards.splice(source.index, 1)
+
+          // assign the card to the destination list
+          movedCard.listId = destination.droppableId
+
+          // add the card to the destination list
+          destinationList.cards.splice(destination.index, 0, movedCard)
+
+          // update order in the source list
+          sourceList.cards.forEach((card, index) => {
+            card.order = index
+          })
+
+          // update order in the destination list
+          destinationList.cards.forEach((card, index) => {
+            card.order = index
+          })
+
+          setOrderedLists(newOrderedLists)
+          // TODO: update order in db
+        }
+      }
+    },
+    [orderedLists]
+  )
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
