@@ -1,6 +1,6 @@
 import { createApi } from 'unsplash-js'
 
-import { UnsplashImage, UnsplashImageJSON } from '@/types/common'
+import type { UnsplashImage, UnsplashImageJSON } from '@/types/unsplash'
 
 export const unsplash = createApi({
   accessKey: process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY,
