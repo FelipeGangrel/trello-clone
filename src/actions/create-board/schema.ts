@@ -8,7 +8,7 @@ export const CreateBoard = z.object({
     })
     .min(3, 'Title must be at least 3 characters long'),
   image: z.string({
-    required_error: 'Image is required',
-    invalid_type_error: 'Image is required',
+    required_error: 'Select an image for your board',
+    invalid_type_error: 'Select an image for your board',
   }),
 })
