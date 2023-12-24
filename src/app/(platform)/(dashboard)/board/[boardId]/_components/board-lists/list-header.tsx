@@ -25,7 +25,7 @@ export const ListHeader = ({ list }: ListItemHeader) => {
 
   const { execute, reset, fieldErrors } = useAction(updateList, {
     onSuccess: (list) => {
-      toast.success(`List "${list.title}" updated`)
+      toast.success(`List was renamed to "${list.title}"`)
       setTitle(list.title)
       disableEditing()
     },
