@@ -35,12 +35,7 @@ export const BoardActions = ({ boardId }: BoardActionsProps) => {
             <p>Board Actions</p>
           </div>
           <Popover.CloseButton />
-          <Button
-            variant="ghost"
-            onClick={onDelete}
-            disabled={isLoading}
-            className="h-auto w-full justify-start rounded-none p-2 px-5 text-sm font-normal"
-          >
+          <Button variant="menu-action" onClick={onDelete} disabled={isLoading}>
             Delete this board
           </Button>
         </Popover.Content>
