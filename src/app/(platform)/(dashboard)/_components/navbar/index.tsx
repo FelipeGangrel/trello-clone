@@ -37,7 +37,7 @@ export const Navbar = () => {
                 rootBox: 'flex justify-center items-center',
                 organizationSwitcherTrigger: 'focus-ring focus:shadow-none',
                 organizationSwitcherPopoverCard:
-                  'bg-popover border shadow-lg rounded-md',
+                  'bg-popover border shadow-md rounded-md',
               },
             }}
           />
@@ -46,7 +46,7 @@ export const Navbar = () => {
             appearance={{
               elements: {
                 userButtonTrigger: 'focus-ring focus:shadow-none',
-                userButtonPopoverCard: 'bg-popover border shadow-lg rounded-md',
+                userButtonPopoverCard: 'bg-popover border shadow-md rounded-md',
               },
             }}
           />
