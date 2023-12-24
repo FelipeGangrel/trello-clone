@@ -18,7 +18,7 @@ type BoardTitleFormProps = {
 export const BoardTitleForm = ({ board }: BoardTitleFormProps) => {
   const { execute, fieldErrors } = useAction(updateBoard, {
     onSuccess: (board) => {
-      toast.success(`Board "${board.title}" updated`)
+      toast.success(`Board renamed to "${board.title}"`)
       setTitle(board.title)
       disableEditing()
     },
