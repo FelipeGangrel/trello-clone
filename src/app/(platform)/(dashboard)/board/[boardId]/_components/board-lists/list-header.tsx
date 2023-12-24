@@ -10,6 +10,8 @@ import { updateList } from '@/actions/update-list'
 import { FormField } from '@/components/form'
 import { useAction } from '@/hooks'
 
+import { ListHeaderActions } from './list-header-actions'
+
 type ListItemHeader = {
   list: List
 }
@@ -106,6 +108,7 @@ export const ListHeader = ({ list }: ListItemHeader) => {
       >
         {list.title}
       </div>
+      <ListHeaderActions list={list} onAddCard={console.log} />
     </div>
   )
 }
