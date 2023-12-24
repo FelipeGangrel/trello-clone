@@ -26,6 +26,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
   try {
     const { id, urls, links, user } = parseImageString(image)
+
     board = await db.board.create({
       data: {
         orgId,
