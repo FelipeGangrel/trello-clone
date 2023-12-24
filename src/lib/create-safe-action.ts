@@ -4,7 +4,7 @@ export type FieldErrors<T> = {
   [K in keyof T]?: string[]
 }
 
-export type ActionState<TInput, TOutput> = {
+export type ActionState<TInput, TOutput = undefined> = {
   fieldErrors?: FieldErrors<TInput>
   errorMessage?: string | null
   data?: TOutput
