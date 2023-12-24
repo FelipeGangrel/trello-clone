@@ -11,7 +11,7 @@ import { Skeleton } from '@/components/ui'
 import { FALLBACK_UNSPLASH_IMAGES } from '@/constants/images'
 import { serializeImage, unsplash } from '@/lib/unsplash'
 import { cn } from '@/lib/utils'
-import { UnsplashImage } from '@/types/common'
+import { UnsplashImage } from '@/types/unsplash'
 
 type BoardImagePickerProps = {
   id: string
