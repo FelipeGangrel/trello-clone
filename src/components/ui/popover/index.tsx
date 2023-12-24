@@ -1,9 +1,12 @@
 'use client'
 
 import * as PopoverPrimitive from '@radix-ui/react-popover'
+import { XIcon } from 'lucide-react'
 import * as React from 'react'
 
 import { cn } from '@/lib/utils'
+
+import { Button } from '..'
 
 const PopoverRoot = PopoverPrimitive.Root
 
@@ -30,9 +33,27 @@ const PopoverContent = React.forwardRef<
 ))
 PopoverContent.displayName = PopoverPrimitive.Content.displayName
 
+const PopoverCloseButton = React.forwardRef<
+  React.ElementRef<typeof PopoverPrimitive.Close>,
+  React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Close>
+>((props, ref) => (
+  <PopoverPrimitive.Close
+    ref={ref}
+    className="absolute right-2 top-2 text-neutral-600"
+    asChild
+    {...props}
+  >
+    <Button variant="ghost" size="xs">
+      <XIcon className="h-4 w-4" />
+    </Button>
+  </PopoverPrimitive.Close>
+))
+PopoverCloseButton.displayName = PopoverPrimitive.Close.displayName
+
 export const Popover = {
   Root: PopoverRoot,
   Trigger: PopoverTrigger,
   Close: PopoverClose,
+  CloseButton: PopoverCloseButton,
   Content: PopoverContent,
 }
