@@ -14,9 +14,10 @@ import { ListHeaderActions } from './list-header-actions'
 
 type ListItemHeader = {
   list: List
+  onAddCard: () => void
 }
 
-export const ListHeader = ({ list }: ListItemHeader) => {
+export const ListHeader = ({ list, onAddCard }: ListItemHeader) => {
   const formRef = useRef<ElementRef<'form'>>(null)
   const inputRef = useRef<ElementRef<'input'>>(null)
 
@@ -108,7 +109,7 @@ export const ListHeader = ({ list }: ListItemHeader) => {
       >
         {list.title}
       </div>
-      <ListHeaderActions list={list} onAddCard={console.log} />
+      <ListHeaderActions list={list} onAddCard={onAddCard} />
     </div>
   )
 }
