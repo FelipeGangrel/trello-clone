@@ -12,14 +12,57 @@ datasource db {
 }
 
 model Board {
-  id            String   @id @default(uuid())
-  orgId         String
-  title         String
+  id    String @id @default(uuid())
+  orgId String
+  title String
+
+  // image data
   imageId       String
-  imageThumbUrl String   @db.Text
-  imageFullUrl  String   @db.Text
-  imageUserName String   @db.Text
-  imageLinkHtml String   @db.Text
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  imageThumbUrl String @db.Text
+  imageFullUrl  String @db.Text
+  imageUserName String @db.Text
+  imageLinkHtml String @db.Text
+
+  // relations
+  lists List[]
+
+  // audit data
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model List {
+  id    String @id @default(uuid())
+  title String
+  order Int
+
+  // relations
+  boardId String
+  board   Board  @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  cards   Card[]
+
+  // audit data
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // indexes
+  @@index([boardId])
+}
+
+model Card {
+  id          String @id @default(uuid())
+  title       String
+  description String
+  order       Int
+
+  // relations
+  listId String
+  list   List   @relation(fields: [listId], references: [id], onDelete: Cascade)
+
+  // audit data
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // indexes
+  @@index([listId])
 }
