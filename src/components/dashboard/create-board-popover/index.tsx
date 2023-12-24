@@ -1,12 +1,15 @@
 'use client'
 
 import { XIcon } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { ElementRef, useRef } from 'react'
 import { toast } from 'sonner'
 
 import { createBoard } from '@/actions/create-board'
 import { FormField, SubmitButton } from '@/components/form'
 import { Button, Popover } from '@/components/ui'
 import { useAction } from '@/hooks'
+import { frontend } from '@/lib/routes'
 
 import { BoardImagePicker } from './board-image-picker'
 
@@ -23,9 +26,14 @@ export const CreateBoardPopover = ({
   side,
   sideOffset = 0,
 }: FormPopoverProps) => {
+  const closeButtonRef = useRef<ElementRef<'button'>>(null)
+  const router = useRouter()
+
   const { execute, fieldErrors } = useAction(createBoard, {
-    onSuccess: (data) => {
-      toast.success(`Board "${data.title}" created!`)
+    onSuccess: (board) => {
+      toast.success(`Board "${board.title}" created!`)
+      closeButtonRef.current?.click()
+      router.push(frontend.board(board.id))
     },
     onError: (error) => {
       toast.error(error)
@@ -46,12 +54,12 @@ export const CreateBoardPopover = ({
         align={align}
         side={side}
         sideOffset={sideOffset}
-        className="w-96 pt-3"
+        className="w-80 pt-3"
       >
         <div className="pb-4 text-center text-sm font-medium text-neutral-600">
           Create board
         </div>
-        <Popover.Close asChild tabIndex={-1}>
+        <Popover.Close asChild ref={closeButtonRef} tabIndex={-1}>
           <Button
             variant="ghost"
             size="xs"
@@ -70,7 +78,9 @@ export const CreateBoardPopover = ({
               errors={fieldErrors}
             />
           </div>
-          <SubmitButton className="w-full">Create</SubmitButton>
+          <SubmitButton variant="brand" className="w-full">
+            Create
+          </SubmitButton>
         </form>
       </Popover.Content>
     </Popover.Root>
