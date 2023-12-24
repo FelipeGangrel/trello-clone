@@ -10,4 +10,5 @@ export const CreateCard = z.object({
     })
     .min(3, 'Title must be at least 3 characters long')
     .trim(),
+  description: z.string().trim().optional(),
 })
