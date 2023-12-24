@@ -44,6 +44,10 @@ export const BoardTitleForm = ({ board }: BoardTitleFormProps) => {
   const handleFormAction = (formData: FormData) => {
     const title = formData.get('title') as string
 
+    if (title === board.title) {
+      return disableEditing()
+    }
+
     execute({ id: board.id, title })
   }
 
@@ -63,7 +67,7 @@ export const BoardTitleForm = ({ board }: BoardTitleFormProps) => {
           id="title"
           defaultValue={title}
           onBlur={handleFieldBlur}
-          className="h-7 border-none bg-transparent px-[7px] py-1 text-lg font-bold focus-visible:outline-none focus-visible:ring-transparent"
+          className="border-none bg-transparent px-2 text-lg font-bold focus-visible:outline-none focus-visible:ring-transparent"
         />
         <FormErrors id="title" errors={fieldErrors} className="mt-0" />
       </form>
@@ -72,7 +76,7 @@ export const BoardTitleForm = ({ board }: BoardTitleFormProps) => {
 
   return (
     <Button
-      className="h-auto w-auto p-1 px-2 text-lg font-bold"
+      className="px-2 text-lg font-bold"
       variant="transparent"
       onClick={enableEditing}
     >
