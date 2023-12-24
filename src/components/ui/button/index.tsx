@@ -21,6 +21,8 @@ const buttonVariants = cva(
         link: 'text-primary underline-offset-4 hover:underline',
         transparent:
           'bg-transparent text-primary-foreground hover:bg-background/20',
+        'menu-action':
+          'h-auto w-full justify-start rounded-none p-2 px-5 text-sm font-normal hover:bg-accent hover:text-accent-foreground',
       },
       size: {
         default: 'h-10 px-4 py-2',
