@@ -1,11 +1,16 @@
 'use client'
 
 import { PlusIcon, XIcon } from 'lucide-react'
-import { forwardRef, HTMLAttributes } from 'react'
-import { useEventListener } from 'usehooks-ts'
+import { useParams } from 'next/navigation'
+import type { ElementRef, HTMLAttributes, KeyboardEventHandler } from 'react'
+import { forwardRef, useRef } from 'react'
+import { toast } from 'sonner'
+import { useEventListener, useOnClickOutside } from 'usehooks-ts'
 
+import { createCard } from '@/actions/create-card'
 import { FormTextarea, SubmitButton } from '@/components/form'
 import { Button } from '@/components/ui'
+import { useAction } from '@/hooks'
 
 type CreateCardFormProps = {
   listId: string
@@ -26,22 +31,60 @@ export const CreateCardForm = forwardRef<
     ...textareaProps
   } = props
 
+  const params = useParams<{ boardId: string }>()
+
+  const formRef = useRef<ElementRef<'form'>>(null)
+
+  const { execute, fieldErrors } = useAction(createCard, {
+    onSuccess: (card) => {
+      toast.success(`Card "${card.title}" created`)
+      onDisableEditing()
+    },
+    onError: (error) => {
+      toast.error(error)
+    },
+  })
+
   const onKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
       onDisableEditing()
     }
   }
 
+  const onTextareaKeyDown: KeyboardEventHandler<HTMLTextAreaElement> = (
+    event
+  ) => {
+    if (event.key === 'Enter' && event.shiftKey === false) {
+      event.preventDefault()
+      formRef.current?.requestSubmit()
+    }
+  }
+
+  const handleFormAction = (formData: FormData) => {
+    const title = formData.get('title') as string
+    const listId = formData.get('listId') as string
+    const boardId = params.boardId
+
+    execute({ title, listId, boardId })
+  }
+
   useEventListener('keydown', onKeyDown)
+  useOnClickOutside(formRef, onDisableEditing)
 
   if (isEditing) {
     return (
-      <form className="m-1 space-y-4 px-1 py-0.5">
+      <form
+        ref={formRef}
+        action={handleFormAction}
+        className="m-1 space-y-4 px-1 py-0.5"
+      >
         <FormTextarea
           ref={ref}
           id="title"
           placeholder="Enter a title for this card..."
           {...textareaProps}
+          onKeyDown={onTextareaKeyDown}
+          errors={fieldErrors}
         />
         <input type="hidden" id="listId" name="listId" defaultValue={listId} />
         <div className="flex items-center gap-x-1">
