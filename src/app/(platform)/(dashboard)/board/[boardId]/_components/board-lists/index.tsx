@@ -138,7 +138,7 @@ export const BoardLists = ({ boardId, lists }: ListContainer) => {
             className="flex h-full gap-x-3"
           >
             {orderedLists.map((list, index) => (
-              <List key={index} index={index} list={list} />
+              <List key={list.id} index={index} list={list} />
             ))}
             {provided.placeholder}
             <CreateListForm />

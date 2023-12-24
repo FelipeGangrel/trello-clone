@@ -56,7 +56,7 @@ export const List = ({ index, list }: ListProps) => {
                   )}
                 >
                   {list.cards.map((card, index) => (
-                    <Card key={index} index={index} card={card} />
+                    <Card key={card.id} index={index} card={card} />
                   ))}
                   {provided.placeholder}
                 </ol>
