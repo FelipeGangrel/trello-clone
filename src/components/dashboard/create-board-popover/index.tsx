@@ -7,7 +7,6 @@ import { createBoard } from '@/actions/create-board'
 import { FormField, SubmitButton } from '@/components/form'
 import { Button, Popover } from '@/components/ui'
 import { useAction } from '@/hooks'
-import { parseImageString } from '@/lib/unsplash'
 
 import { BoardImagePicker } from './board-image-picker'
 
@@ -37,7 +36,7 @@ export const CreateBoardPopover = ({
     const title = formData.get('title') as string
     const image = formData.get('image') as string
 
-    // execute({ title })
+    execute({ title, image })
   }
 
   return (

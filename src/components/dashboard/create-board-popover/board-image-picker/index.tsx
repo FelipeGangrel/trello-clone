@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useFormStatus } from 'react-dom'
+import { set } from 'zod'
 
 import { FormErrors } from '@/components/form'
 import { Skeleton } from '@/components/ui'
@@ -33,7 +34,6 @@ export const BoardImagePicker = ({ id, errors }: BoardImagePickerProps) => {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        throw new Error('test')
         const result = await unsplash.photos.getRandom({
           collectionIds: [TRELLO_COLLECTION_ID],
           count: IMAGES_COUNT,
@@ -77,17 +77,19 @@ export const BoardImagePicker = ({ id, errors }: BoardImagePickerProps) => {
             <Image
               src={image.urls.thumb}
               alt={image.alt_description}
-              layout="fill"
+              fill
               className="rounded-sm object-cover"
+              sizes={'auto'}
             />
             <input
               type="radio"
-              id={id}
+              id={`radio-${id}-${image.id}`}
               name={id}
               value={serializeImage(image)}
               checked={selectedImageId === image.id}
               disabled={pending}
               className="hidden"
+              readOnly
             />
             {selectedImageId === image.id && (
               <div className="absolute inset-y-0 flex h-full w-full items-center justify-center rounded-sm bg-black/30">
