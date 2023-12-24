@@ -14,7 +14,7 @@ type ListItemHeader = {
   list: List
 }
 
-export const ListItemHeader = ({ list }: ListItemHeader) => {
+export const ListHeader = ({ list }: ListItemHeader) => {
   const formRef = useRef<ElementRef<'form'>>(null)
   const inputRef = useRef<ElementRef<'input'>>(null)
 

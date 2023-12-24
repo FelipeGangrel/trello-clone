@@ -14,7 +14,7 @@ import { useAction } from '@/hooks'
 
 import { ListWrapper } from './list-wrapper'
 
-export const ListForm = () => {
+export const CreateListForm = () => {
   const params = useParams<{ boardId: string }>()
   const router = useRouter()
 
