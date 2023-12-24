@@ -33,7 +33,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     })
   } catch (error) {
     return {
-      errorMessage: 'Failed to update board',
+      errorMessage: 'Failed to delete board',
     }
   }
 
