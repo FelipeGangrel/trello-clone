@@ -8,7 +8,7 @@ import { Button, Sheet } from '@/components/ui'
 import { useMobileSidebar } from '@/hooks'
 import { localStorageKeys } from '@/lib/local-storage'
 
-import { Sidebar } from '..'
+import { Sidebar } from '../sidebar'
 
 export const MobileSidebar = () => {
   const pathname = usePathname()

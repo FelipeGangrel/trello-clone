@@ -1,6 +1,7 @@
 import { OrganizationSwitcher, UserButton } from '@clerk/nextjs'
 import { PlusIcon } from 'lucide-react'
 
+import { CreateBoardPopover } from '@/components/dashboard'
 import { Logo } from '@/components/logo'
 import { Button } from '@/components/ui'
 import { frontend } from '@/lib/routes'
@@ -15,12 +16,16 @@ export const Navbar = () => {
         <div className="hidden md:flex">
           <Logo />
         </div>
-        <Button size="xs" variant="brand" className="hidden md:block">
-          Create
-        </Button>
-        <Button size="icon" variant="brand" className="inline-flex md:hidden">
-          <PlusIcon />
-        </Button>
+        <CreateBoardPopover align="start" side="bottom" sideOffset={10}>
+          <Button size="xs" variant="brand" className="hidden md:block">
+            Create
+          </Button>
+        </CreateBoardPopover>
+        <CreateBoardPopover>
+          <Button size="icon" variant="brand" className="inline-flex md:hidden">
+            <PlusIcon />
+          </Button>
+        </CreateBoardPopover>
         <div className="ml-auto flex items-center gap-x-4">
           <OrganizationSwitcher
             hidePersonal
