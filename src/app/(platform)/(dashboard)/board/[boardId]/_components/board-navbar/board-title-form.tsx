@@ -1,7 +1,8 @@
 'use client'
 
 import type { Board } from '@prisma/client'
-import { ElementRef, useRef, useState } from 'react'
+import type { ElementRef, KeyboardEvent } from 'react'
+import { useRef, useState } from 'react'
 import { toast } from 'sonner'
 
 import { updateBoard } from '@/actions/update-board'
@@ -51,8 +52,14 @@ export const BoardTitleForm = ({ board }: BoardTitleFormProps) => {
     execute({ id: board.id, title })
   }
 
-  const handleFieldBlur = () => {
+  const onBlur = () => {
     formRef?.current?.requestSubmit()
+  }
+
+  const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Escape') {
+      disableEditing()
+    }
   }
 
   if (isEditing) {
@@ -66,7 +73,8 @@ export const BoardTitleForm = ({ board }: BoardTitleFormProps) => {
           ref={inputRef}
           id="title"
           defaultValue={title}
-          onBlur={handleFieldBlur}
+          onBlur={onBlur}
+          onKeyDown={onKeyDown}
           className="border-none bg-transparent px-2 text-lg font-bold focus-visible:outline-none focus-visible:ring-transparent"
         />
         <FormErrors id="title" errors={fieldErrors} className="mt-0" />
