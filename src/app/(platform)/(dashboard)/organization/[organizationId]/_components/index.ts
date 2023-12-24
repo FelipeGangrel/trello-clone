@@ -1,3 +1,3 @@
 export * from './board-list'
-export * from './info'
-export * from './org-watcher'
+export * from './organization-info'
+export * from './organization-watcher'

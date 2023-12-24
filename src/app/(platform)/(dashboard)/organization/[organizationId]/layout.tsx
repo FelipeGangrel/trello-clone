@@ -1,4 +1,4 @@
-import { OrgWatcher } from './_components'
+import { OrganizationWatcher } from './_components'
 
 type LayoutProps = {
   children: React.ReactNode
@@ -7,7 +7,7 @@ type LayoutProps = {
 const OrganizationIdLayout = ({ children }: LayoutProps) => {
   return (
     <>
-      <OrgWatcher />
+      <OrganizationWatcher />
       {children}
     </>
   )

@@ -4,7 +4,11 @@ import { useOrganizationList } from '@clerk/nextjs'
 import { useParams } from 'next/navigation'
 import { useEffect } from 'react'
 
-export const OrgWatcher = () => {
+/**
+ * @description this component updates the active organization when
+ * the organizationId changes
+ */
+export const OrganizationWatcher = () => {
   const params = useParams()
   const { setActive } = useOrganizationList()
 

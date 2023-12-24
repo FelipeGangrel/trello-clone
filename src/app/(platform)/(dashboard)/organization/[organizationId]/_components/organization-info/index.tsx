@@ -8,11 +8,11 @@ import { Skeleton } from '@/components/ui'
 
 type InfoProps = {}
 
-export const Info = ({}: InfoProps) => {
+export const OrganizationInfo = ({}: InfoProps) => {
   const { organization, isLoaded } = useOrganization()
 
   if (!isLoaded) {
-    return <Info.Skeleton />
+    return <OrganizationInfo.Skeleton />
   }
 
   return (
@@ -40,7 +40,7 @@ export const Info = ({}: InfoProps) => {
   )
 }
 
-Info.Skeleton = function InfoSkeleton() {
+OrganizationInfo.Skeleton = function OrganizationInfoSkeleton() {
   return (
     <div className="flex items-center gap-x-4">
       <div className="h-[60px] w-[60px]">
