@@ -50,9 +50,9 @@ model List {
 }
 
 model Card {
-  id          String @id @default(uuid())
+  id          String  @id @default(uuid())
   title       String
-  description String
+  description String? @db.Text
   order       Int
 
   // relations
