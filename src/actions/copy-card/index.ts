@@ -7,7 +7,7 @@ import { createSafeAction } from '@/lib/create-safe-action'
 import { db } from '@/lib/db'
 import { frontend } from '@/lib/routes'
 
-import { DuplicateCard } from './schema'
+import { CopyCard } from './schema'
 import { InputType, ReturnType } from './types'
 
 const handler = async (data: InputType): Promise<ReturnType> => {
@@ -59,7 +59,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     })
   } catch (error) {
     return {
-      errorMessage: 'Failed to duplicate card',
+      errorMessage: 'Failed to copy card',
     }
   }
 
@@ -69,4 +69,4 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   }
 }
 
-export const duplicateCard = createSafeAction(DuplicateCard, handler)
+export const copyCard = createSafeAction(CopyCard, handler)

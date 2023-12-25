@@ -6,8 +6,8 @@ import type { ElementRef } from 'react'
 import { useRef } from 'react'
 import { toast } from 'sonner'
 
+import { copyList } from '@/actions/copy-list'
 import { deleteList } from '@/actions/delete-list'
-import { duplicateList } from '@/actions/duplicate-list'
 import { Button, Popover, Separator } from '@/components/ui'
 import { useAction } from '@/hooks'
 
@@ -35,21 +35,18 @@ export const ListHeaderActions = ({
     }
   )
 
-  const { execute: executeDuplicate, isLoading: isDuplicating } = useAction(
-    duplicateList,
-    {
-      onSuccess: (list) => {
-        toast.success(`List "${list.title}" was created`)
-        closeButtonRef.current?.click()
-      },
-      onError: (error) => {
-        toast.error(error)
-      },
-    }
-  )
+  const { execute: executeCopy, isLoading: isCopying } = useAction(copyList, {
+    onSuccess: (list) => {
+      toast.success(`List "${list.title}" was created`)
+      closeButtonRef.current?.click()
+    },
+    onError: (error) => {
+      toast.error(error)
+    },
+  })
 
-  const onDuplicate = () => {
-    executeDuplicate({ id: list.id, boardId: list.boardId })
+  const onCopy = () => {
+    executeCopy({ id: list.id, boardId: list.boardId })
   }
 
   const onDelete = () => {
@@ -76,12 +73,8 @@ export const ListHeaderActions = ({
         <Button variant="menu-action" onClick={onAddCard}>
           Add card...
         </Button>
-        <Button
-          variant="menu-action"
-          onClick={onDuplicate}
-          disabled={isDuplicating}
-        >
-          Duplicate this list
+        <Button variant="menu-action" onClick={onCopy} disabled={isCopying}>
+          Copy this list
         </Button>
         <Separator className="my-4" />
         <Button variant="menu-action" onClick={onDelete} disabled={isDeleting}>

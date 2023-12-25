@@ -3,7 +3,7 @@ import { z } from 'zod'
 import type { ActionState } from '@/lib/create-safe-action'
 import type { ListWithCards } from '@/types/db'
 
-import { DuplicateList } from './schema'
+import { CopyList } from './schema'
 
-export type InputType = z.infer<typeof DuplicateList>
+export type InputType = z.infer<typeof CopyList>
 export type ReturnType = ActionState<InputType, ListWithCards>

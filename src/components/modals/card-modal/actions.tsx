@@ -2,7 +2,7 @@ import { CopyIcon, TrashIcon } from 'lucide-react'
 import { useParams } from 'next/navigation'
 import { toast } from 'sonner'
 
-import { duplicateCard } from '@/actions/duplicate-card'
+import { copyCard } from '@/actions/copy-card'
 import { Button, Skeleton } from '@/components/ui'
 import { useAction, useCardModal } from '@/hooks'
 import type { CardWithList } from '@/types/db'
@@ -15,19 +15,21 @@ export const Actions = ({ card }: ActionsProps) => {
   const params = useParams<{ boardId: string }>()
   const cardModal = useCardModal()
 
-  const { execute: executeDuplicateCard, isLoading: isDuplicatingCard } =
-    useAction(duplicateCard, {
+  const { execute: executeCopyCard, isLoading: isCopying } = useAction(
+    copyCard,
+    {
       onSuccess: (card) => {
-        toast.success(`Card "${card.title}" duplicated`)
+        toast.success(`Card "${card.title}" created`)
         cardModal.onClose()
       },
       onError: (error) => {
         toast.error(error)
       },
-    })
+    }
+  )
 
-  const onDuplicate = () => {
-    executeDuplicateCard({
+  const onCopy = () => {
+    executeCopyCard({
       id: card.id,
       boardId: params.boardId,
     })
@@ -41,18 +43,18 @@ export const Actions = ({ card }: ActionsProps) => {
       <Button
         variant="slate"
         size="xs"
-        onClick={onDuplicate}
-        disabled={isDuplicatingCard}
+        onClick={onCopy}
+        disabled={isCopying}
         className="w-full justify-start"
       >
         <CopyIcon className="mr-2 h-4 w-4" />
-        <span>Duplicate</span>
+        <span>Copy</span>
       </Button>
       <Button
         variant="slate"
         size="xs"
-        onClick={onDuplicate}
-        disabled={isDuplicatingCard}
+        onClick={onCopy}
+        disabled={isCopying}
         className="w-full justify-start"
       >
         <TrashIcon className="mr-2 h-4 w-4" />

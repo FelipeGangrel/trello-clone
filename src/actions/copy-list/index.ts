@@ -7,7 +7,7 @@ import { createSafeAction } from '@/lib/create-safe-action'
 import { db } from '@/lib/db'
 import { frontend } from '@/lib/routes'
 
-import { DuplicateList } from './schema'
+import { CopyList } from './schema'
 import { InputType, ReturnType } from './types'
 
 const handler = async (data: InputType): Promise<ReturnType> => {
@@ -78,7 +78,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     })
   } catch (error) {
     return {
-      errorMessage: 'Failed to duplicate list',
+      errorMessage: 'Failed to copy list',
     }
   }
 
@@ -88,4 +88,4 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   }
 }
 
-export const duplicateList = createSafeAction(DuplicateList, handler)
+export const copyList = createSafeAction(CopyList, handler)
