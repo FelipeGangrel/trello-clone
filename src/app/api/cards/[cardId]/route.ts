@@ -2,6 +2,7 @@ import { auth } from '@clerk/nextjs'
 import { NextRequest, NextResponse } from 'next/server'
 
 import { db } from '@/lib/db'
+import { fakeTimeout } from '@/utils/fake-timeout'
 
 type Params = {
   cardId: string
@@ -28,6 +29,8 @@ export async function GET(req: NextRequest, { params }: { params: Params }) {
         list: true,
       },
     })
+
+    await fakeTimeout(3000)
 
     return NextResponse.json(card)
   } catch (error) {
