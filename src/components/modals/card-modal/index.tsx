@@ -24,7 +24,7 @@ export const CardModal = () => {
 
   return (
     <Dialog.Root open={isOpen} onOpenChange={onClose}>
-      <Dialog.Content>
+      <Dialog.Content className="max-w-3xl">
         {card ? <Header card={card} /> : <Header.Skeleton />}
         <div className="grid grid-cols-1 md:grid-cols-4 md:gap-4">
           <div className="col-span-3">
