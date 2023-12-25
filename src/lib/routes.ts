@@ -8,3 +8,7 @@ export const frontend = {
   organizationBilling: (id: string) => `/organization/${id}/billing`,
   board: (id: string) => `/board/${id}`,
 }
+
+export const api = {
+  fetchCard: (id: string) => `/api/cards/${id}`,
+}
