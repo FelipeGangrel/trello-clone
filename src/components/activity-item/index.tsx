@@ -16,9 +16,7 @@ export const ActivityItem = ({ log }: ActivityItemProps) => {
       </Avatar.Root>
       <div className="flex flex-col space-y-0.5">
         <p className="text-sm text-muted-foreground">
-          <span className="font-semibold lowercase text-neutral-700">
-            {log.userName}
-          </span>{' '}
+          <span className="font-semibold text-neutral-700">{log.userName}</span>{' '}
           {generateLogMessage(log)}
         </p>
         <p className="text-xs text-muted-foreground">
