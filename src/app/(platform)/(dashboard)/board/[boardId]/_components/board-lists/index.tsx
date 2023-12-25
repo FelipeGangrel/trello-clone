@@ -6,6 +6,7 @@ import {
   OnDragEndResponder,
 } from '@hello-pangea/dnd'
 import { useCallback, useEffect, useState } from 'react'
+import ScrollContainer from 'react-indiana-drag-scroll'
 import { toast } from 'sonner'
 
 import { updateCardsOrder } from '@/actions/update-cards-order'
@@ -155,23 +156,25 @@ export const BoardLists = ({ boardId, lists }: ListContainer) => {
   )
 
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <Droppable droppableId="lists" type="list" direction="horizontal">
-        {(provided) => (
-          <ol
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-            className="flex h-full gap-x-3"
-          >
-            {orderedLists.map((list, index) => (
-              <List key={list.id} index={index} list={list} />
-            ))}
-            {provided.placeholder}
-            <CreateListForm />
-            <div className="w-1 flex-shrink-0" />
-          </ol>
-        )}
-      </Droppable>
-    </DragDropContext>
+    <ScrollContainer className="h-full w-full">
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable droppableId="lists" type="list" direction="horizontal">
+          {(provided) => (
+            <ol
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+              className="flex h-full gap-x-3"
+            >
+              {orderedLists.map((list, index) => (
+                <List key={list.id} index={index} list={list} />
+              ))}
+              {provided.placeholder}
+              <CreateListForm />
+              <div className="w-1 flex-shrink-0" />
+            </ol>
+          )}
+        </Droppable>
+      </DragDropContext>
+    </ScrollContainer>
   )
 }
