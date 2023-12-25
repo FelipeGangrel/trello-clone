@@ -8,6 +8,7 @@ import { createSafeAction } from '@/lib/create-safe-action'
 import { db } from '@/lib/db'
 import { hasAvailableCount, increaseBoardsCount } from '@/lib/org-limit'
 import { frontend } from '@/lib/routes'
+import { checkSubscription } from '@/lib/subscription'
 import { parseImageString } from '@/lib/unsplash'
 
 import { CreateBoard } from './schema'
@@ -23,8 +24,9 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   }
 
   const canCreate = await hasAvailableCount()
+  const isPro = await checkSubscription()
 
-  if (!canCreate) {
+  if (!canCreate && !isPro) {
     return {
       errorMessage:
         'You have reached your limit of free boards. Upgrade your plan to create more.',
@@ -49,7 +51,9 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       },
     })
 
-    await increaseBoardsCount()
+    if (!isPro) {
+      await increaseBoardsCount()
+    }
 
     createAuditLog({
       action: 'CREATE',
