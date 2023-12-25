@@ -10,7 +10,8 @@
     "prisma:generate": "prisma generate",
     "prisma:studio": "prisma studio",
     "prisma:push": "prisma db push",
-    "stripe:listen": "stripe listen --forward-to localhost:3000/api/webhooks/stripe"
+    "stripe:listen": "stripe listen --forward-to localhost:3000/api/webhooks/stripe",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.29.0",
