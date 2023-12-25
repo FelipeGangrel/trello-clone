@@ -1,5 +1,5 @@
 import { auth, currentUser } from '@clerk/nextjs'
-import type { ACTION, ENTITY_TYPE } from '@prisma/client'
+import type { ACTION, AuditLog, ENTITY_TYPE } from '@prisma/client'
 
 import { db } from './db'
 
@@ -35,5 +35,20 @@ export async function createAuditLog(props: AuditLogProps) {
     })
   } catch (error) {
     console.log('[AUDIT_LOG_ERROR]', error)
+  }
+}
+
+export function generateLogMessage(log: AuditLog) {
+  const { action, entityTitle, entityType } = log
+
+  switch (action) {
+    case 'CREATE':
+      return `created ${entityType.toLowerCase()} "${entityTitle}"`
+    case 'UPDATE':
+      return `updated ${entityType.toLowerCase()} "${entityTitle}"`
+    case 'DELETE':
+      return `deleted ${entityType.toLowerCase()} "${entityTitle}"`
+    default:
+      return `unknown action ${entityType.toLowerCase()} "${entityTitle}"`
   }
 }
