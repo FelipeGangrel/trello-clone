@@ -20,7 +20,6 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   }
 
   const { id, boardId, title } = data
-
   let list
 
   try {
@@ -32,9 +31,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
           orgId,
         },
       },
-      data: {
-        title,
-      },
+      data: { title },
     })
   } catch (error) {
     return {

@@ -20,7 +20,6 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   }
 
   const { boardId, listId, title, description } = data
-
   let card
 
   try {
@@ -40,15 +39,9 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     }
 
     const lastCard = await db.card.findFirst({
-      where: {
-        listId,
-      },
-      orderBy: {
-        order: 'desc',
-      },
-      select: {
-        order: true,
-      },
+      where: { listId },
+      orderBy: { order: 'desc' },
+      select: { order: true },
     })
 
     const newOrder = lastCard ? lastCard.order + 1 : 1

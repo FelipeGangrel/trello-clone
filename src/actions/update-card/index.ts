@@ -20,7 +20,6 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   }
 
   const { boardId, id, ...values } = data
-
   let card
 
   try {

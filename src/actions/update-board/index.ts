@@ -20,18 +20,12 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   }
 
   const { title, id } = data
-
   let board
 
   try {
     board = await db.board.update({
-      where: {
-        id,
-        orgId,
-      },
-      data: {
-        title,
-      },
+      where: { id, orgId },
+      data: { title },
     })
   } catch (error) {
     return {

@@ -21,15 +21,11 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   }
 
   const { id } = data
-
   let board
 
   try {
     board = await db.board.delete({
-      where: {
-        id,
-        orgId,
-      },
+      where: { id, orgId },
     })
   } catch (error) {
     return {

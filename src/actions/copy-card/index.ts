@@ -3,6 +3,7 @@
 import { auth } from '@clerk/nextjs'
 import { revalidatePath } from 'next/cache'
 
+import { createAuditLog } from '@/lib/create-audit-log'
 import { createSafeAction } from '@/lib/create-safe-action'
 import { db } from '@/lib/db'
 import { frontend } from '@/lib/routes'
@@ -20,7 +21,6 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   }
 
   const { id, boardId } = data
-
   let card
 
   try {
@@ -57,9 +57,16 @@ const handler = async (data: InputType): Promise<ReturnType> => {
         listId: cardToCopy.listId,
       },
     })
+
+    await createAuditLog({
+      action: 'CREATE',
+      entityId: card.id,
+      entityType: 'CARD',
+      entityTitle: card.title,
+    })
   } catch (error) {
     return {
-      errorMessage: 'Failed to copy card',
+      errorMessage: 'Failed to copy',
     }
   }
 

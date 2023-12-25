@@ -3,6 +3,7 @@
 import { auth } from '@clerk/nextjs'
 import { revalidatePath } from 'next/cache'
 
+import { createAuditLog } from '@/lib/create-audit-log'
 import { createSafeAction } from '@/lib/create-safe-action'
 import { db } from '@/lib/db'
 import { frontend } from '@/lib/routes'
@@ -20,7 +21,6 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   }
 
   const { id, boardId } = data
-
   let list
 
   try {
@@ -44,15 +44,9 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     }
 
     const lastList = await db.list.findFirst({
-      where: {
-        boardId,
-      },
-      orderBy: {
-        order: 'desc',
-      },
-      select: {
-        order: true,
-      },
+      where: { boardId },
+      orderBy: { order: 'desc' },
+      select: { order: true },
     })
 
     const newOrder = lastList ? lastList.order + 1 : 1
@@ -76,9 +70,16 @@ const handler = async (data: InputType): Promise<ReturnType> => {
         cards: true,
       },
     })
+
+    await createAuditLog({
+      action: 'CREATE',
+      entityId: list.id,
+      entityType: 'LIST',
+      entityTitle: list.title,
+    })
   } catch (error) {
     return {
-      errorMessage: 'Failed to copy list',
+      errorMessage: 'Failed to copy',
     }
   }
 

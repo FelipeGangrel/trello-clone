@@ -21,7 +21,6 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   }
 
   const { title, image } = data
-
   let board
 
   try {

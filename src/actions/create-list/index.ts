@@ -20,7 +20,6 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   }
 
   const { boardId, title } = data
-
   let list
 
   try {
@@ -38,15 +37,9 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     }
 
     const lastList = await db.list.findFirst({
-      where: {
-        boardId,
-      },
-      orderBy: {
-        order: 'desc',
-      },
-      select: {
-        order: true,
-      },
+      where: { boardId },
+      orderBy: { order: 'desc' },
+      select: { order: true },
     })
 
     const newOrder = lastList ? lastList.order + 1 : 1
