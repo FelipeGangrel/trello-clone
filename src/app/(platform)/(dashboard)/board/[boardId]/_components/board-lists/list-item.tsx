@@ -7,16 +7,16 @@ import { useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 import { ListWithCards } from '@/types/db'
 
-import { Card } from './card'
+import { CardItem } from './card-item'
 import { CreateCardForm } from './create-card-form'
 import { ListHeader } from './list-header'
 
-type ListProps = {
+type ListItemProps = {
   index: number
   list: ListWithCards
 }
 
-export const List = ({ index, list }: ListProps) => {
+export const ListItem = ({ index, list }: ListItemProps) => {
   const textareaRef = useRef<ElementRef<'textarea'>>(null)
 
   const [isEditing, setIsEditing] = useState(false)
@@ -60,7 +60,7 @@ export const List = ({ index, list }: ListProps) => {
                   )}
                 >
                   {list.cards.map((card, index) => (
-                    <Card key={card.id} index={index} card={card} />
+                    <CardItem key={card.id} index={index} card={card} />
                   ))}
                   {provided.placeholder}
                 </ol>

@@ -4,12 +4,12 @@ import type { Card as CardModel } from '@prisma/client'
 import { useCardModal } from '@/hooks/use-card-modal'
 import { cn } from '@/lib/utils'
 
-type ListCardProps = {
+type CardItemProps = {
   index: number
   card: CardModel
 }
 
-export const Card = ({ index, card }: ListCardProps) => {
+export const CardItem = ({ index, card }: CardItemProps) => {
   const openModal = useCardModal((state) => state.onOpen)
 
   return (

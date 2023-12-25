@@ -15,7 +15,7 @@ import { useAction } from '@/hooks'
 import { ListWithCards } from '@/types/db'
 
 import { CreateListForm } from './create-list-form'
-import { List } from './list'
+import { ListItem } from './list-item'
 
 type ListContainer = {
   boardId: string
@@ -166,7 +166,7 @@ export const BoardLists = ({ boardId, lists }: ListContainer) => {
               className="flex h-full gap-x-3"
             >
               {orderedLists.map((list, index) => (
-                <List key={list.id} index={index} list={list} />
+                <ListItem key={list.id} index={index} list={list} />
               ))}
               {provided.placeholder}
               <CreateListForm />
