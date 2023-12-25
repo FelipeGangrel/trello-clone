@@ -1,4 +1,4 @@
-import { CopyIcon } from 'lucide-react'
+import { CopyIcon, TrashIcon } from 'lucide-react'
 import { useParams } from 'next/navigation'
 import { toast } from 'sonner'
 
@@ -33,17 +33,30 @@ export const Actions = ({ card }: ActionsProps) => {
     })
   }
 
+  const onDelete = () => {}
+
   return (
     <div className="mt-2 space-y-2">
       <p className="text-xs font-semibold">Actions</p>
       <Button
-        variant="menu-action"
+        variant="slate"
         size="xs"
         onClick={onDuplicate}
         disabled={isDuplicatingCard}
+        className="w-full justify-start"
       >
         <CopyIcon className="mr-2 h-4 w-4" />
         <span>Duplicate</span>
+      </Button>
+      <Button
+        variant="slate"
+        size="xs"
+        onClick={onDuplicate}
+        disabled={isDuplicatingCard}
+        className="w-full justify-start"
+      >
+        <TrashIcon className="mr-2 h-4 w-4" />
+        <span>Delete</span>
       </Button>
     </div>
   )
