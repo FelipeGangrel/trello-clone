@@ -1,4 +1,6 @@
-import { AuditLog } from '@prisma/client'
+'use client'
+
+import type { AuditLog } from '@prisma/client'
 import { format } from 'date-fns'
 
 import { Avatar } from '@/components/ui'
