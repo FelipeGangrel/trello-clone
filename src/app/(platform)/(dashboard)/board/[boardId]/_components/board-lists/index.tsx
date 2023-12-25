@@ -8,7 +8,7 @@ import {
 import { useCallback, useEffect, useState } from 'react'
 import { toast } from 'sonner'
 
-import { updateListOrder } from '@/actions/update-list-order'
+import { updateListsOrder } from '@/actions/update-lists-order'
 import { useAction } from '@/hooks'
 import { ListWithCards } from '@/types/db'
 
@@ -31,9 +31,9 @@ function reorder<T>(list: T[], startIndex: number, endIndex: number): T[] {
 export const BoardLists = ({ boardId, lists }: ListContainer) => {
   const [orderedLists, setOrderedLists] = useState(lists)
 
-  const { execute: executeReorderList } = useAction(updateListOrder, {
+  const { execute: executeReorderLists } = useAction(updateListsOrder, {
     onSuccess: () => {
-      toast.success('List order updated')
+      toast.success('Lists order updated')
     },
     onError: (error) => {
       toast.error(error)
@@ -69,7 +69,7 @@ export const BoardLists = ({ boardId, lists }: ListContainer) => {
         ).map((item, index) => ({ ...item, order: index }))
 
         setOrderedLists(items)
-        executeReorderList({ boardId, items })
+        executeReorderLists({ boardId, items })
       }
 
       // if user moves a card
