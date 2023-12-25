@@ -12,6 +12,7 @@ import { MAX_FREE_BOARDS } from '@/constants/boards'
 import { db } from '@/lib/db'
 import { getBoardsCount } from '@/lib/org-limit'
 import { frontend } from '@/lib/routes'
+import { checkSubscription } from '@/lib/subscription'
 
 export const BoardList = async () => {
   const { orgId } = auth()
@@ -21,6 +22,7 @@ export const BoardList = async () => {
   }
 
   const boardsCount = await getBoardsCount()
+  const isPro = await checkSubscription()
 
   const boards = await db.board.findMany({
     where: { orgId },
@@ -49,18 +51,20 @@ export const BoardList = async () => {
         >
           <p className="text-sm">Create new board</p>
           <span className="text-xs">
-            {`${MAX_FREE_BOARDS - boardsCount} remaining`}
+            {isPro ? 'Unlimited' : `${MAX_FREE_BOARDS - boardsCount} remaining`}
           </span>
-          <Hint
-            sideOffset={40}
-            side="bottom"
-            description={`
+          {!isPro && (
+            <Hint
+              sideOffset={40}
+              side="bottom"
+              description={`
               Free workspaces can have up to ${MAX_FREE_BOARDS} open boards. 
               For unlimited boards upgrade this workspace
             `}
-          >
-            <HelpCircleIcon className="absolute bottom-2 right-2 h-3 w-3" />
-          </Hint>
+            >
+              <HelpCircleIcon className="absolute bottom-2 right-2 h-3 w-3" />
+            </Hint>
+          )}
         </div>
       </CreateBoardPopover>
     </div>
