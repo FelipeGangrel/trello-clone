@@ -23,6 +23,7 @@ const buttonVariants = cva(
           'bg-transparent text-primary-foreground hover:bg-background/20',
         'menu-action':
           'h-auto w-full justify-start rounded-none p-2 px-5 text-sm font-normal hover:bg-accent hover:text-accent-foreground',
+        slate: 'bg-slate-100 text-secondary-foreground hover:bg-slate-200',
       },
       size: {
         default: 'h-10 px-4 py-2',
