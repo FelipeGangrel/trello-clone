@@ -4,7 +4,7 @@ import { MAX_FREE_BOARDS } from '@/constants/boards'
 
 import { db } from './db'
 
-export async function increaseAvailableCount() {
+export async function increaseBoardsCount() {
   const { orgId } = auth()
 
   if (!orgId) {
@@ -27,7 +27,7 @@ export async function increaseAvailableCount() {
   }
 }
 
-export async function decreaseAvailableCount() {
+export async function decreaseBoardsCount() {
   const { orgId } = auth()
 
   if (!orgId) {
@@ -68,7 +68,7 @@ export async function hasAvailableCount() {
   }
 }
 
-export async function getAvailableCount() {
+export async function getBoardsCount() {
   const { orgId } = auth()
 
   if (!orgId) {
