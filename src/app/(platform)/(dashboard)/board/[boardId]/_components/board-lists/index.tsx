@@ -8,6 +8,7 @@ import {
 import { useCallback, useEffect, useState } from 'react'
 import { toast } from 'sonner'
 
+import { updateCardsOrder } from '@/actions/update-cards-order'
 import { updateListsOrder } from '@/actions/update-lists-order'
 import { useAction } from '@/hooks'
 import { ListWithCards } from '@/types/db'
@@ -33,7 +34,16 @@ export const BoardLists = ({ boardId, lists }: ListContainer) => {
 
   const { execute: executeReorderLists } = useAction(updateListsOrder, {
     onSuccess: () => {
-      toast.success('Lists order updated')
+      toast.success('Lists reordered')
+    },
+    onError: (error) => {
+      toast.error(error)
+    },
+  })
+
+  const { execute: executeReorderCards } = useAction(updateCardsOrder, {
+    onSuccess: () => {
+      toast.success('Cards reordered')
     },
     onError: (error) => {
       toast.error(error)
@@ -114,8 +124,7 @@ export const BoardLists = ({ boardId, lists }: ListContainer) => {
           sourceList.cards = reorderedCards
 
           setOrderedLists(newOrderedLists)
-          // TODO: update order in db
-
+          executeReorderCards({ boardId, items: reorderedCards })
           // user moves the card to another list
         } else {
           // remove card from the source list
@@ -138,11 +147,11 @@ export const BoardLists = ({ boardId, lists }: ListContainer) => {
           })
 
           setOrderedLists(newOrderedLists)
-          // TODO: update order in db
+          executeReorderCards({ boardId, items: destinationList.cards })
         }
       }
     },
-    [orderedLists]
+    [boardId, executeReorderCards, executeReorderLists, orderedLists]
   )
 
   return (
