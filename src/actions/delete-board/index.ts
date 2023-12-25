@@ -9,6 +9,7 @@ import { createSafeAction } from '@/lib/create-safe-action'
 import { db } from '@/lib/db'
 import { decreaseBoardsCount } from '@/lib/org-limit'
 import { frontend } from '@/lib/routes'
+import { checkSubscription } from '@/lib/subscription'
 
 import { DeleteBoard } from './schema'
 import { InputType, ReturnType } from './types'
@@ -22,6 +23,8 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     }
   }
 
+  const isPro = await checkSubscription()
+
   const { id } = data
   let board
 
@@ -30,7 +33,9 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       where: { id, orgId },
     })
 
-    await decreaseBoardsCount()
+    if (!isPro) {
+      await decreaseBoardsCount()
+    }
 
     await createAuditLog({
       action: 'DELETE',
