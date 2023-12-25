@@ -7,7 +7,7 @@ import { frontend } from '@/lib/routes'
 // Please edit this to allow other routes to be public as needed.
 // See https://clerk.com/docs/references/nextjs/auth-middleware for more information about configuring your Middleware
 export default authMiddleware({
-  publicRoutes: ['/'],
+  publicRoutes: ['/', '/api/webhooks'],
   afterAuth: (auth, req) => {
     // if logged in and in public route
     if (auth.userId && auth.isPublicRoute) {
