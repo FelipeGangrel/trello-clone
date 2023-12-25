@@ -6,7 +6,10 @@ import {
   OnDragEndResponder,
 } from '@hello-pangea/dnd'
 import { useCallback, useEffect, useState } from 'react'
+import { toast } from 'sonner'
 
+import { updateListOrder } from '@/actions/update-list-order'
+import { useAction } from '@/hooks'
 import { ListWithCards } from '@/types/db'
 
 import { CreateListForm } from './create-list-form'
@@ -27,6 +30,15 @@ function reorder<T>(list: T[], startIndex: number, endIndex: number): T[] {
 
 export const BoardLists = ({ boardId, lists }: ListContainer) => {
   const [orderedLists, setOrderedLists] = useState(lists)
+
+  const { execute: executeReorderList } = useAction(updateListOrder, {
+    onSuccess: () => {
+      toast.success('List order updated')
+    },
+    onError: (error) => {
+      toast.error(error)
+    },
+  })
 
   useEffect(() => {
     setOrderedLists(lists)
@@ -57,7 +69,7 @@ export const BoardLists = ({ boardId, lists }: ListContainer) => {
         ).map((item, index) => ({ ...item, order: index }))
 
         setOrderedLists(items)
-        // TODO: update order in db
+        executeReorderList({ boardId, items })
       }
 
       // if user moves a card
