@@ -1,10 +1,15 @@
 import { auth } from '@clerk/nextjs'
+import { set } from 'lodash'
 import { NextRequest, NextResponse } from 'next/server'
 
 import { db } from '@/lib/db'
 
 type Params = {
   cardId: string
+}
+
+function fakeTimeout(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
 export async function GET(req: NextRequest, { params }: { params: Params }) {
@@ -25,13 +30,11 @@ export async function GET(req: NextRequest, { params }: { params: Params }) {
         },
       },
       include: {
-        list: {
-          select: {
-            title: true,
-          },
-        },
+        list: true,
       },
     })
+
+    await fakeTimeout(1000)
 
     return NextResponse.json(card)
   } catch (error) {
