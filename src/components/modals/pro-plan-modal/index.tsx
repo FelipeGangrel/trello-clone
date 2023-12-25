@@ -1,12 +1,27 @@
 'use client'
 
 import Image from 'next/image'
+import { toast } from 'sonner'
 
+import { stripeRedirect } from '@/actions'
 import { Button, Dialog } from '@/components/ui'
-import { useProPlanModal } from '@/hooks'
+import { useAction, useProPlanModal } from '@/hooks'
 
 export const ProPlanModal = () => {
   const proModal = useProPlanModal()
+
+  const { execute, isLoading } = useAction(stripeRedirect, {
+    onSuccess: (url) => {
+      window.location.href = url
+    },
+    onError: (error) => {
+      toast.error(error)
+    },
+  })
+
+  const onClick = () => {
+    execute({})
+  }
 
   return (
     <Dialog.Root open={proModal.isOpen} onOpenChange={proModal.onClose}>
@@ -34,7 +49,12 @@ export const ProPlanModal = () => {
               <li>And more</li>
             </ul>
           </div>
-          <Button className="w-full" variant="brand">
+          <Button
+            className="w-full"
+            variant="brand"
+            onClick={onClick}
+            disabled={isLoading}
+          >
             Upgrade now
           </Button>
         </div>
