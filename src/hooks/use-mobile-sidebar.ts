@@ -7,7 +7,6 @@ type MobileSidebarState = {
 type MobileSidebarActions = {
   onOpen: () => void
   onClose: () => void
-  onToggle: () => void
 }
 
 export const useMobileSidebar = create<
@@ -16,5 +15,4 @@ export const useMobileSidebar = create<
   isOpen: false,
   onOpen: () => set({ isOpen: true }),
   onClose: () => set({ isOpen: false }),
-  onToggle: () => set((state) => ({ isOpen: !state.isOpen })),
 }))
