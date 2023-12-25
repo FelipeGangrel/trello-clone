@@ -1,7 +1,7 @@
 import { ClerkProvider } from '@clerk/nextjs'
 import { Toaster } from 'sonner'
 
-import { CardModalProvider } from '@/components/providers/card-modal-provider'
+import { CardModalProvider, QueryProvider } from '@/components/providers'
 
 type LayoutProps = {
   children: React.ReactNode
@@ -10,9 +10,11 @@ type LayoutProps = {
 const PlatformLayout = ({ children }: LayoutProps) => {
   return (
     <ClerkProvider>
-      <Toaster />
-      <CardModalProvider />
-      {children}
+      <QueryProvider>
+        <Toaster />
+        <CardModalProvider />
+        {children}
+      </QueryProvider>
     </ClerkProvider>
   )
 }
