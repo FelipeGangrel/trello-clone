@@ -8,7 +8,9 @@ import { redirect } from 'next/navigation'
 import { CreateBoardPopover } from '@/components/dashboard'
 import { Hint } from '@/components/hint'
 import { Skeleton } from '@/components/ui'
+import { MAX_FREE_BOARDS } from '@/constants/boards'
 import { db } from '@/lib/db'
+import { getBoardsCount } from '@/lib/org-limit'
 import { frontend } from '@/lib/routes'
 
 export const BoardList = async () => {
@@ -17,6 +19,8 @@ export const BoardList = async () => {
   if (!orgId) {
     return redirect(frontend.selectOrganization())
   }
+
+  const boardsCount = await getBoardsCount()
 
   const boards = await db.board.findMany({
     where: { orgId },
@@ -44,11 +48,16 @@ export const BoardList = async () => {
           className="relative flex aspect-video h-full w-full flex-col items-center justify-center gap-y-1 rounded-sm bg-muted transition hover:opacity-75"
         >
           <p className="text-sm">Create new board</p>
-          <span className="text-xs">5 remaining</span>
+          <span className="text-xs">
+            {`${MAX_FREE_BOARDS - boardsCount} remaining`}
+          </span>
           <Hint
             sideOffset={40}
             side="bottom"
-            description="Free workspaces can have up to 5 open boards. For unlimited boards upgrade this workspace"
+            description={`
+              Free workspaces can have up to ${MAX_FREE_BOARDS} open boards. 
+              For unlimited boards upgrade this workspace
+            `}
           >
             <HelpCircleIcon className="absolute bottom-2 right-2 h-3 w-3" />
           </Hint>
