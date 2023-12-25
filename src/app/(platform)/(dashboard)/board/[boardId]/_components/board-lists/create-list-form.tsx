@@ -94,7 +94,7 @@ export const CreateListForm = () => {
     <ListWrapper>
       <button
         onClick={enableEditing}
-        className="flex w-full items-center rounded-md bg-white/90 p-3 text-sm font-medium backdrop-blur-md transition hover:bg-white/80"
+        className="flex w-full items-center rounded-md bg-slate-50/95 p-3 text-sm font-medium backdrop-blur-md transition hover:bg-slate-50/80"
       >
         <PlusIcon className="mr-2 h-4 w-4" />
         <span>Add a list</span>

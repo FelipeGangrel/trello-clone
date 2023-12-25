@@ -102,9 +102,9 @@ export const CreateCardForm = forwardRef<
   return (
     <div className="px-2 pt-2">
       <Button
-        variant="menu-action"
+        variant="slate"
         onClick={onEnableEditing}
-        className="text-muted-foreground hover:bg-transparent"
+        className="w-full justify-start bg-transparent"
       >
         <PlusIcon className="mr-2 h-4 w-4" />
         <span>Add a card</span>
