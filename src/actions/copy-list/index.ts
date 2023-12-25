@@ -77,6 +77,15 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       entityType: 'LIST',
       entityTitle: list.title,
     })
+
+    list.cards.forEach(async (card) => {
+      await createAuditLog({
+        action: 'CREATE',
+        entityId: card.id,
+        entityType: 'CARD',
+        entityTitle: card.title,
+      })
+    })
   } catch (error) {
     return {
       errorMessage: 'Failed to copy',
