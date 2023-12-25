@@ -7,7 +7,7 @@ import { createSafeAction } from '@/lib/create-safe-action'
 import { db } from '@/lib/db'
 import { frontend } from '@/lib/routes'
 
-import { UpdateListOrder } from './schema'
+import { UpdateListsOrder } from './schema'
 import { InputType, ReturnType } from './types'
 
 const handler = async (data: InputType): Promise<ReturnType> => {
@@ -51,4 +51,4 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   }
 }
 
-export const updateListOrder = createSafeAction(UpdateListOrder, handler)
+export const updateListsOrder = createSafeAction(UpdateListsOrder, handler)

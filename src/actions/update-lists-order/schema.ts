@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const UpdateListOrder = z.object({
+export const UpdateListsOrder = z.object({
   boardId: z.string(),
   items: z.array(
     z.object({

@@ -3,7 +3,7 @@ import { z } from 'zod'
 
 import type { ActionState } from '@/lib/create-safe-action'
 
-import { UpdateListOrder } from './schema'
+import { UpdateListsOrder } from './schema'
 
-export type InputType = z.infer<typeof UpdateListOrder>
+export type InputType = z.infer<typeof UpdateListsOrder>
 export type ReturnType = ActionState<InputType, List[]>
