@@ -6,6 +6,7 @@ import { revalidatePath } from 'next/cache'
 import { createAuditLog } from '@/lib/audit-log'
 import { createSafeAction } from '@/lib/create-safe-action'
 import { db } from '@/lib/db'
+import { hasAvailableCount, increaseBoardsCount } from '@/lib/org-limit'
 import { frontend } from '@/lib/routes'
 import { parseImageString } from '@/lib/unsplash'
 
@@ -18,6 +19,15 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   if (!userId || !orgId) {
     return {
       errorMessage: 'Unauthorized',
+    }
+  }
+
+  const canCreate = await hasAvailableCount()
+
+  if (!canCreate) {
+    return {
+      errorMessage:
+        'You have reached your limit of free boards. Upgrade your plan to create more.',
     }
   }
 
@@ -38,6 +48,8 @@ const handler = async (data: InputType): Promise<ReturnType> => {
         imageUserName: user.name,
       },
     })
+
+    await increaseBoardsCount()
 
     createAuditLog({
       action: 'CREATE',
