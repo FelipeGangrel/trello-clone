@@ -12,6 +12,7 @@ specifiers:
   '@radix-ui/react-separator': ^1.0.3
   '@radix-ui/react-slot': ^1.0.2
   '@radix-ui/react-tooltip': ^1.0.7
+  '@tanstack/react-query': ^5.14.6
   '@types/lodash': ^4.14.202
   '@types/node': ^20
   '@types/react': ^18
@@ -55,6 +56,7 @@ dependencies:
   '@radix-ui/react-separator': 1.0.3_y25r3j74y2ixp3wwje7zxg74ra
   '@radix-ui/react-slot': 1.0.2_qinpt5tsrh57s4kh6guy25fqdq
   '@radix-ui/react-tooltip': 1.0.7_y25r3j74y2ixp3wwje7zxg74ra
+  '@tanstack/react-query': 5.14.6_react@18.2.0
   class-variance-authority: 0.7.0
   clsx: 2.0.0
   lodash: 4.17.21
@@ -1206,6 +1208,19 @@ packages:
     resolution: {integrity: sha512-E4KcWTpoLHqwPHLxidpOqQbcrZVgi0rsmmZXUle1jXmJfuIf/UWpczUJ7MZZ5tlxytgJXyp0w4PGkkeLiuIdZw==}
     dependencies:
       tslib: 2.6.2
+    dev: false
+
+  /@tanstack/query-core/5.14.2:
+    resolution: {integrity: sha512-QmoJvC72sSWs3hgGis8JdmlDvqLfYGWUK4UG6OR9Q6t28JMN9m2FDwKPqoSJ9YVocELCSjMt/FGjEiLfk8000Q==}
+    dev: false
+
+  /@tanstack/react-query/5.14.6_react@18.2.0:
+    resolution: {integrity: sha512-+INnJdq/904d+K2XQjqdIC58glpNGfQ8Xz93M6WBeJs5FPGFV8SEuFVzPtW/bKZ/Hu7hAiJpbFLDg5Lysvwmuw==}
+    peerDependencies:
+      react: ^18.0.0
+    dependencies:
+      '@tanstack/query-core': 5.14.2
+      react: 18.2.0
     dev: false
 
   /@types/body-parser/1.19.5:
