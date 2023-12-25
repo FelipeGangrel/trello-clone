@@ -8,8 +8,7 @@ import {
 import { useCallback, useEffect, useState } from 'react'
 import { toast } from 'sonner'
 
-import { updateCardsOrder } from '@/actions/update-cards-order'
-import { updateListsOrder } from '@/actions/update-lists-order'
+import { updateCardsOrder, updateListsOrder } from '@/actions'
 import { useAction } from '@/hooks'
 import { ListWithCards } from '@/types/db'
 

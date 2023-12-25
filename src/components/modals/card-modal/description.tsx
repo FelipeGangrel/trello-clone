@@ -6,7 +6,7 @@ import { useRef, useState } from 'react'
 import { toast } from 'sonner'
 import { useEventListener, useOnClickOutside } from 'usehooks-ts'
 
-import { updateCard } from '@/actions/update-card'
+import { updateCard } from '@/actions'
 import { FormTextarea, SubmitButton } from '@/components/form'
 import { Button, Skeleton } from '@/components/ui'
 import { useAction } from '@/hooks'

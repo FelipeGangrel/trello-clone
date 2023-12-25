@@ -6,7 +6,7 @@ import { useRef, useState } from 'react'
 import { toast } from 'sonner'
 import { useEventListener } from 'usehooks-ts'
 
-import { updateList } from '@/actions/update-list'
+import { updateList } from '@/actions'
 import { FormField } from '@/components/form'
 import { useAction } from '@/hooks'
 

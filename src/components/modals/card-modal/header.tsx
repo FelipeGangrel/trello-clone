@@ -7,7 +7,7 @@ import type { ElementRef } from 'react'
 import { useRef, useState } from 'react'
 import { toast } from 'sonner'
 
-import { updateCard } from '@/actions/update-card'
+import { updateCard } from '@/actions'
 import { FormField } from '@/components/form'
 import { Skeleton } from '@/components/ui'
 import { useAction } from '@/hooks'

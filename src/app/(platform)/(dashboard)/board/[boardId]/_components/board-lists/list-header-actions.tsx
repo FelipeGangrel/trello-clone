@@ -6,8 +6,7 @@ import type { ElementRef } from 'react'
 import { useRef } from 'react'
 import { toast } from 'sonner'
 
-import { copyList } from '@/actions/copy-list'
-import { deleteList } from '@/actions/delete-list'
+import { copyList, deleteList } from '@/actions'
 import { Button, Popover, Separator } from '@/components/ui'
 import { useAction } from '@/hooks'
 

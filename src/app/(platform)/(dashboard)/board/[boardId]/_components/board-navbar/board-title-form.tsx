@@ -6,7 +6,7 @@ import { useRef, useState } from 'react'
 import { toast } from 'sonner'
 import { useEventListener } from 'usehooks-ts'
 
-import { updateBoard } from '@/actions/update-board'
+import { updateBoard } from '@/actions'
 import { FormErrors, FormField } from '@/components/form'
 import { Button } from '@/components/ui'
 import { useAction } from '@/hooks'

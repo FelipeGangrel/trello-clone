@@ -7,7 +7,7 @@ import { useRef, useState } from 'react'
 import { toast } from 'sonner'
 import { useEventListener, useOnClickOutside } from 'usehooks-ts'
 
-import { createList } from '@/actions/create-list'
+import { createList } from '@/actions'
 import { FormField, SubmitButton } from '@/components/form'
 import { Button } from '@/components/ui'
 import { useAction } from '@/hooks'

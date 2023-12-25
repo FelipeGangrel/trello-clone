@@ -3,7 +3,7 @@
 import { MoreHorizontalIcon } from 'lucide-react'
 import { toast } from 'sonner'
 
-import { deleteBoard } from '@/actions/delete-board'
+import { deleteBoard } from '@/actions'
 import { Button, Popover } from '@/components/ui'
 import { useAction } from '@/hooks'
 
