@@ -5,9 +5,12 @@ import { LayoutIcon } from 'lucide-react'
 import { useParams } from 'next/navigation'
 import type { ElementRef } from 'react'
 import { useRef, useState } from 'react'
+import { toast } from 'sonner'
 
+import { updateCard } from '@/actions/update-card'
 import { FormField } from '@/components/form'
 import { Skeleton } from '@/components/ui'
+import { useAction } from '@/hooks'
 import type { CardWithList } from '@/types/db'
 
 type HeaderProps = {
@@ -16,11 +19,25 @@ type HeaderProps = {
 
 export const Header = ({ card }: HeaderProps) => {
   const queryClient = useQueryClient()
-  const params = useParams()
+  const params = useParams<{ boardId: string }>()
 
   const inputRef = useRef<ElementRef<'input'>>(null)
 
   const [title, setTitle] = useState(card.title)
+
+  const { execute, fieldErrors } = useAction(updateCard, {
+    onSuccess: (card) => {
+      queryClient.invalidateQueries({
+        queryKey: ['card', card.id],
+      })
+
+      toast.success(`Card renamed to "${card.title}"`)
+      setTitle(card.title)
+    },
+    onError: (error) => {
+      toast.error(error)
+    },
+  })
 
   const onBlur = () => {
     inputRef.current?.form?.requestSubmit()
@@ -32,6 +49,12 @@ export const Header = ({ card }: HeaderProps) => {
     if (title === card.title) {
       return
     }
+
+    execute({
+      id: card.id,
+      boardId: params.boardId,
+      title,
+    })
   }
 
   return (
@@ -44,6 +67,7 @@ export const Header = ({ card }: HeaderProps) => {
             onBlur={onBlur}
             id="title"
             defaultValue={title}
+            errors={fieldErrors}
             className="relative -left-1.5 mb-0.5 w-[95%] truncate border-transparent bg-transparent px-1 text-xl font-semibold text-neutral-700 focus-visible:border-input focus-visible:bg-white"
           />
         </form>
