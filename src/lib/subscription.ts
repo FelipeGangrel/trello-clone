@@ -1,3 +1,3 @@
 export async function checkSubscription() {
-  return false
+  return true
 }
