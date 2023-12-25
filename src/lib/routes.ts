@@ -11,4 +11,5 @@ export const frontend = {
 
 export const api = {
   fetchCard: (id: string) => `/api/cards/${id}`,
+  fetchCardLogs: (id: string) => `/api/cards/${id}/logs`,
 }
