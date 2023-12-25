@@ -6,8 +6,6 @@ import * as React from 'react'
 
 import { cn } from '@/lib/utils'
 
-import { Button } from '../button'
-
 const DialogRoot = DialogPrimitive.Root
 
 const DialogTrigger = DialogPrimitive.Trigger
@@ -23,7 +21,7 @@ const DialogOverlay = React.forwardRef<
   <DialogPrimitive.Overlay
     ref={ref}
     className={cn(
-      'fixed inset-0 z-50 bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
+      'fixed inset-0 z-50 bg-black/80 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
       className
     )}
     {...props}
@@ -110,26 +108,8 @@ const DialogDescription = React.forwardRef<
 ))
 DialogDescription.displayName = DialogPrimitive.Description.displayName
 
-const DialogCloseButton = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Close>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Close>
->((props, ref) => (
-  <DialogPrimitive.Close
-    ref={ref}
-    className="absolute right-2 top-2 text-neutral-600"
-    asChild
-    {...props}
-  >
-    <Button variant="ghost" size="xs">
-      <XIcon className="h-4 w-4" />
-    </Button>
-  </DialogPrimitive.Close>
-))
-DialogCloseButton.displayName = DialogPrimitive.Close.displayName
-
 export const Dialog = {
   Close: DialogClose,
-  CloseButton: DialogCloseButton,
   Content: DialogContent,
   Description: DialogDescription,
   Footer: DialogFooter,
