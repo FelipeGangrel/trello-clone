@@ -1,10 +1,10 @@
 import { ActivityIcon } from 'lucide-react'
 import { Suspense } from 'react'
 
+import { OrganizationInfo } from '@/components/dashboard'
 import { Separator } from '@/components/ui/separator'
 import { checkSubscription } from '@/lib/subscription'
 
-import { OrganizationInfo } from '../_components/organization-info'
 import { ActivityList } from './_components/activity-list'
 
 const ActivityPage = async () => {

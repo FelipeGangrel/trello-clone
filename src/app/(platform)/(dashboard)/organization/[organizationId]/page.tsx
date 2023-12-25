@@ -1,10 +1,11 @@
 import { User2Icon } from 'lucide-react'
 import { Suspense } from 'react'
 
+import { OrganizationInfo } from '@/components/dashboard'
 import { Separator } from '@/components/ui'
 import { checkSubscription } from '@/lib/subscription'
 
-import { BoardList, OrganizationInfo } from './_components'
+import { BoardList } from './_components'
 
 const OrganizationPage = async () => {
   const isPro = await checkSubscription()
