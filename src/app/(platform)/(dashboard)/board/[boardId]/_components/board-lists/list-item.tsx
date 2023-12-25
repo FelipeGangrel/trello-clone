@@ -43,8 +43,7 @@ export const ListItem = ({ index, list }: ListItemProps) => {
           <div
             {...provided.dragHandleProps}
             className={cn(
-              'relative z-0 w-full pb-2',
-              'before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:rounded-md before:bg-slate-50/95 before:shadow-md before:backdrop-blur-md before:content-[""]',
+              'w-full rounded-md bg-slate-50 pb-2 shadow-sm',
               snapshot.isDragging && 'shadow-md'
             )}
           >

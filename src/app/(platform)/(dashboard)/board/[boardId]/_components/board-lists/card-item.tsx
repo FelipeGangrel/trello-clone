@@ -22,7 +22,7 @@ export const CardItem = ({ index, card }: CardItemProps) => {
           role="button"
           onClick={() => openModal(card.id)}
           className={cn(
-            'truncate rounded-md border-2 border-transparent bg-card px-3 py-2 text-sm shadow-sm transition-colors hover:border-black',
+            'z-10 truncate rounded-md border-2 border-transparent bg-card px-3 py-2 text-sm shadow-sm transition-colors hover:border-black',
             snapshot.isDragging && 'shadow-md'
           )}
         >
