@@ -9,9 +9,9 @@ import { frontend, prependAppUrl } from '@/lib/routes'
 import { stripe } from '@/lib/stripe'
 
 import { StripeRedirect } from './schema'
-import { InputType, ReturnType } from './types'
+import { ReturnType } from './types'
 
-const handler = async (data: InputType): Promise<ReturnType> => {
+const handler = async (): Promise<ReturnType> => {
   const { userId, orgId } = auth()
   const user = await currentUser()
 
