@@ -7,6 +7,7 @@ import { redirect } from 'next/navigation'
 import { createAuditLog } from '@/lib/audit-log'
 import { createSafeAction } from '@/lib/create-safe-action'
 import { db } from '@/lib/db'
+import { decreaseBoardsCount } from '@/lib/org-limit'
 import { frontend } from '@/lib/routes'
 
 import { DeleteBoard } from './schema'
@@ -28,6 +29,8 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     board = await db.board.delete({
       where: { id, orgId },
     })
+
+    await decreaseBoardsCount()
 
     await createAuditLog({
       action: 'DELETE',
