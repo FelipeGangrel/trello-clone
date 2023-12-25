@@ -5,6 +5,7 @@ specifiers:
   '@hello-pangea/dnd': ^16.5.0
   '@prisma/client': 5.7.1
   '@radix-ui/react-accordion': ^1.1.2
+  '@radix-ui/react-avatar': ^1.0.4
   '@radix-ui/react-dialog': ^1.0.5
   '@radix-ui/react-dropdown-menu': ^2.0.6
   '@radix-ui/react-label': ^2.0.2
@@ -20,6 +21,7 @@ specifiers:
   autoprefixer: ^10.0.1
   class-variance-authority: ^0.7.0
   clsx: ^2.0.0
+  date-fns: ^3.0.6
   eslint: ^8
   eslint-config-next: 14.0.4
   eslint-config-prettier: ^9.1.0
@@ -49,6 +51,7 @@ dependencies:
   '@hello-pangea/dnd': 16.5.0_y25r3j74y2ixp3wwje7zxg74ra
   '@prisma/client': 5.7.1_prisma@5.7.1
   '@radix-ui/react-accordion': 1.1.2_y25r3j74y2ixp3wwje7zxg74ra
+  '@radix-ui/react-avatar': 1.0.4_y25r3j74y2ixp3wwje7zxg74ra
   '@radix-ui/react-dialog': 1.0.5_y25r3j74y2ixp3wwje7zxg74ra
   '@radix-ui/react-dropdown-menu': 2.0.6_y25r3j74y2ixp3wwje7zxg74ra
   '@radix-ui/react-label': 2.0.2_y25r3j74y2ixp3wwje7zxg74ra
@@ -59,6 +62,7 @@ dependencies:
   '@tanstack/react-query': 5.14.6_react@18.2.0
   class-variance-authority: 0.7.0
   clsx: 2.0.0
+  date-fns: 3.0.6
   lodash: 4.17.21
   lucide-react: 0.299.0_react@18.2.0
   next: 14.0.4_biqbaboplfbrettd7655fr4n2y
@@ -562,6 +566,30 @@ packages:
     dependencies:
       '@babel/runtime': 7.23.6
       '@radix-ui/react-primitive': 1.0.3_y25r3j74y2ixp3wwje7zxg74ra
+      '@types/react': 18.2.45
+      '@types/react-dom': 18.2.18
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /@radix-ui/react-avatar/1.0.4_y25r3j74y2ixp3wwje7zxg74ra:
+    resolution: {integrity: sha512-kVK2K7ZD3wwj3qhle0ElXhOjbezIgyl2hVvgwfIdexL3rN6zJmy5AqqIf+D31lxVppdzV8CjAfZ6PklkmInZLw==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.23.6
+      '@radix-ui/react-context': 1.0.1_qinpt5tsrh57s4kh6guy25fqdq
+      '@radix-ui/react-primitive': 1.0.3_y25r3j74y2ixp3wwje7zxg74ra
+      '@radix-ui/react-use-callback-ref': 1.0.1_qinpt5tsrh57s4kh6guy25fqdq
+      '@radix-ui/react-use-layout-effect': 1.0.1_qinpt5tsrh57s4kh6guy25fqdq
       '@types/react': 18.2.45
       '@types/react-dom': 18.2.18
       react: 18.2.0
@@ -1806,6 +1834,10 @@ packages:
   /damerau-levenshtein/1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
     dev: true
+
+  /date-fns/3.0.6:
+    resolution: {integrity: sha512-W+G99rycpKMMF2/YD064b2lE7jJGUe+EjOES7Q8BIGY8sbNdbgcs9XFTZwvzc9Jx1f3k7LB7gZaZa7f8Agzljg==}
+    dev: false
 
   /debug/3.2.7:
     resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}
