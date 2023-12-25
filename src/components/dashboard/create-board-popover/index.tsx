@@ -7,7 +7,7 @@ import { toast } from 'sonner'
 import { createBoard } from '@/actions'
 import { FormField, SubmitButton } from '@/components/form'
 import { Popover } from '@/components/ui'
-import { useAction } from '@/hooks'
+import { useAction, useProPlanModal } from '@/hooks'
 import { frontend } from '@/lib/routes'
 
 import { BoardImagePicker } from './board-image-picker'
@@ -28,6 +28,8 @@ export const CreateBoardPopover = ({
   const closeButtonRef = useRef<ElementRef<'button'>>(null)
   const router = useRouter()
 
+  const openProPlanModal = useProPlanModal((state) => state.onOpen)
+
   const { execute, fieldErrors } = useAction(createBoard, {
     onSuccess: (board) => {
       toast.success(`Board "${board.title}" created!`)
@@ -36,6 +38,7 @@ export const CreateBoardPopover = ({
     },
     onError: (error) => {
       toast.error(error)
+      openProPlanModal()
     },
   })
 
@@ -64,7 +67,7 @@ export const CreateBoardPopover = ({
             <BoardImagePicker id="image" errors={fieldErrors} />
             <FormField
               id="title"
-              label="title"
+              label="Title"
               type="text"
               errors={fieldErrors}
             />

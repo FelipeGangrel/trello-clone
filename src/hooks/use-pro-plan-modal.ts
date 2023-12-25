@@ -5,7 +5,7 @@ type ModalState = {
 }
 
 type ModalActions = {
-  onOpen: (id: string) => void
+  onOpen: () => void
   onClose: () => void
 }
 
