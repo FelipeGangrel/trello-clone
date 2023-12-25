@@ -1,20 +1,18 @@
 import { create } from 'zustand'
 
-type CardModalState = {
+type ModalState = {
   id?: string
   isOpen: boolean
 }
 
-type CardModalActions = {
+type ModalActions = {
   onOpen: (id: string) => void
   onClose: () => void
 }
 
-export const useCardModal = create<CardModalState & CardModalActions>(
-  (set) => ({
-    id: undefined,
-    isOpen: false,
-    onOpen: (id) => set({ isOpen: true, id }),
-    onClose: () => set({ isOpen: false, id: undefined }),
-  })
-)
+export const useCardModal = create<ModalState & ModalActions>((set) => ({
+  id: undefined,
+  isOpen: false,
+  onOpen: (id) => set({ isOpen: true, id }),
+  onClose: () => set({ isOpen: false, id: undefined }),
+}))
