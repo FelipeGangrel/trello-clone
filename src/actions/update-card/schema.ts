@@ -5,6 +5,6 @@ import { CreateCard } from '../create-card/schema'
 export const UpdateCard = z.object({
   id: z.string(),
   boardId: CreateCard.shape.boardId,
-  title: CreateCard.shape.title,
+  title: z.optional(CreateCard.shape.title),
   description: CreateCard.shape.description,
 })
