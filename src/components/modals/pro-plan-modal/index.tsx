@@ -6,11 +6,10 @@ import { Button, Dialog } from '@/components/ui'
 import { useProPlanModal } from '@/hooks'
 
 export const ProPlanModal = () => {
-  const isOpen = useProPlanModal((state) => state.isOpen)
-  const onClose = useProPlanModal((state) => state.onClose)
+  const proModal = useProPlanModal()
 
   return (
-    <Dialog.Root open={isOpen} onOpenChange={onClose}>
+    <Dialog.Root open={proModal.isOpen} onOpenChange={proModal.onClose}>
       <Dialog.Content className="max-w-md overflow-hidden p-0">
         <div className="relative flex aspect-video items-center justify-center">
           <Image

@@ -16,8 +16,7 @@ import { Header } from './header'
 
 export const CardModal = () => {
   const cardId = useCardModal((state) => state.id!)
-  const isOpen = useCardModal((state) => state.isOpen)
-  const onClose = useCardModal((state) => state.onClose)
+  const cardModal = useCardModal()
 
   const { data: card } = useQuery<CardWithList>({
     queryKey: ['card', cardId],
@@ -30,7 +29,7 @@ export const CardModal = () => {
   })
 
   return (
-    <Dialog.Root open={isOpen} onOpenChange={onClose}>
+    <Dialog.Root open={cardModal.isOpen} onOpenChange={cardModal.onClose}>
       <Dialog.Content className="max-w-3xl">
         {card ? <Header card={card} /> : <Header.Skeleton />}
         <div className="grid grid-cols-1 md:grid-cols-4 md:gap-4">
