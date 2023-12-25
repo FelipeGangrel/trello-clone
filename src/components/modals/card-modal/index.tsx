@@ -8,6 +8,7 @@ import { fetcher } from '@/lib/fetcher'
 import { api } from '@/lib/routes'
 import { CardWithList } from '@/types/db'
 
+import { Actions } from './actions'
 import { Description } from './description'
 import { Header } from './header'
 
@@ -31,6 +32,7 @@ export const CardModal = () => {
               {card ? <Description card={card} /> : <Description.Skeleton />}
             </div>
           </div>
+          {card ? <Actions card={card} /> : <Actions.Skeleton />}
         </div>
       </Dialog.Content>
     </Dialog.Root>
