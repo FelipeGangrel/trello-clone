@@ -6,7 +6,7 @@ type LayoutProps = {
 
 const DashboardLayout = ({ children }: LayoutProps) => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pb-10">
       <Navbar />
       <div>{children}</div>
     </div>
