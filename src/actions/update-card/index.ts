@@ -3,6 +3,7 @@
 import { auth } from '@clerk/nextjs'
 import { revalidatePath } from 'next/cache'
 
+import { createAuditLog } from '@/lib/create-audit-log'
 import { createSafeAction } from '@/lib/create-safe-action'
 import { db } from '@/lib/db'
 import { frontend } from '@/lib/routes'
@@ -35,6 +36,13 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       data: {
         ...values,
       },
+    })
+
+    await createAuditLog({
+      action: 'UPDATE',
+      entityId: card.id,
+      entityType: 'CARD',
+      entityTitle: card.title,
     })
   } catch (error) {
     return {
