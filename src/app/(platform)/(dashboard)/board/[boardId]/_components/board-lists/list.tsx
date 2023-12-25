@@ -34,7 +34,7 @@ export const List = ({ index, list }: ListProps) => {
 
   return (
     <Draggable draggableId={list.id} index={index}>
-      {(provided) => (
+      {(provided, snapshot) => (
         <li
           {...provided.draggableProps}
           ref={provided.innerRef}
@@ -42,7 +42,11 @@ export const List = ({ index, list }: ListProps) => {
         >
           <div
             {...provided.dragHandleProps}
-            className="w-full rounded-md bg-slate-50 pb-2 shadow-md"
+            className={cn(
+              'relative z-0 w-full pb-2',
+              'before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:rounded-md before:bg-white/90 before:shadow-md before:backdrop-blur-md before:content-[""]',
+              snapshot.isDragging && 'shadow-md'
+            )}
           >
             <ListHeader list={list} onAddCard={enableEditing} />
             <Droppable droppableId={list.id} type="card">
