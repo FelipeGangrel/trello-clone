@@ -3,6 +3,7 @@ import { useParams } from 'next/navigation'
 import { toast } from 'sonner'
 
 import { copyCard } from '@/actions/copy-card'
+import { deleteCard } from '@/actions/delete-card'
 import { Button, Skeleton } from '@/components/ui'
 import { useAction, useCardModal } from '@/hooks'
 import type { CardWithList } from '@/types/db'
@@ -15,11 +16,21 @@ export const Actions = ({ card }: ActionsProps) => {
   const params = useParams<{ boardId: string }>()
   const cardModal = useCardModal()
 
-  const { execute: executeCopyCard, isLoading: isCopying } = useAction(
-    copyCard,
+  const { execute: executeCopy, isLoading: isCopying } = useAction(copyCard, {
+    onSuccess: (card) => {
+      toast.success(`Card "${card.title}" created`)
+      cardModal.onClose()
+    },
+    onError: (error) => {
+      toast.error(error)
+    },
+  })
+
+  const { execute: executeDelete, isLoading: isDeleting } = useAction(
+    deleteCard,
     {
       onSuccess: (card) => {
-        toast.success(`Card "${card.title}" created`)
+        toast.success(`Card "${card.title}" deleted`)
         cardModal.onClose()
       },
       onError: (error) => {
@@ -29,13 +40,18 @@ export const Actions = ({ card }: ActionsProps) => {
   )
 
   const onCopy = () => {
-    executeCopyCard({
+    executeCopy({
       id: card.id,
       boardId: params.boardId,
     })
   }
 
-  const onDelete = () => {}
+  const onDelete = () => {
+    executeDelete({
+      id: card.id,
+      boardId: params.boardId,
+    })
+  }
 
   return (
     <div className="mt-2 space-y-2">
@@ -53,7 +69,7 @@ export const Actions = ({ card }: ActionsProps) => {
       <Button
         variant="slate"
         size="xs"
-        onClick={onCopy}
+        onClick={onDelete}
         disabled={isCopying}
         className="w-full justify-start"
       >
