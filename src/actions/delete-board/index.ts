@@ -4,7 +4,7 @@ import { auth } from '@clerk/nextjs'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
-import { createAuditLog } from '@/lib/create-audit-log'
+import { createAuditLog } from '@/lib/audit-log'
 import { createSafeAction } from '@/lib/create-safe-action'
 import { db } from '@/lib/db'
 import { frontend } from '@/lib/routes'
