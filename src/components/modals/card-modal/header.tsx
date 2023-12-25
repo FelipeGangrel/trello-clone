@@ -82,10 +82,10 @@ export const Header = ({ card }: HeaderProps) => {
 Header.Skeleton = function HeaderSkeleton() {
   return (
     <div className="mb-6 flex items-start gap-x-3">
-      <Skeleton className="mt-1 h-6 w-6 bg-neutral-200" />
+      <Skeleton className="mt-1 h-6 w-6" />
       <div>
-        <Skeleton className="mb-1 h-6 w-24 bg-neutral-200" />
-        <Skeleton className="h-4 w-12 bg-neutral-200" />
+        <Skeleton className="mb-1 h-6 w-24" />
+        <Skeleton className="h-4 w-12" />
       </div>
     </div>
   )

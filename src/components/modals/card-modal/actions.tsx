@@ -52,9 +52,9 @@ export const Actions = ({ card }: ActionsProps) => {
 Actions.Skeleton = function ActionsSkeleton() {
   return (
     <div className="mt-2 space-y-2">
-      <Skeleton className="h-4 w-20 bg-neutral-200" />
-      <Skeleton className="h-8 w-full bg-neutral-200" />
-      <Skeleton className="h-8 w-full bg-neutral-200" />
+      <Skeleton className="h-4 w-20" />
+      <Skeleton className="h-8 w-full" />
+      <Skeleton className="h-8 w-full" />
     </div>
   )
 }
