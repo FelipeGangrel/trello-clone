@@ -7,18 +7,19 @@ import { Dialog } from '@/components/ui'
 import { useCardModal } from '@/hooks/use-card-modal'
 import { fetcher } from '@/lib/fetcher'
 import { api } from '@/lib/routes'
-import type { CardWithList } from '@/types/db'
+import type { CardWithRelations } from '@/types/db'
 
 import { Actions } from './actions'
 import { Activity } from './activity'
 import { Description } from './description'
 import { Header } from './header'
+import { Tasks } from './tasks'
 
 export const CardModal = () => {
   const cardId = useCardModal((state) => state.id!)
   const cardModal = useCardModal()
 
-  const { data: card } = useQuery<CardWithList>({
+  const { data: card } = useQuery<CardWithRelations>({
     queryKey: ['card', cardId],
     queryFn: () => fetcher(api.fetchCard(cardId)),
   })
@@ -36,6 +37,8 @@ export const CardModal = () => {
           <div className="col-span-3">
             <div className="w-full space-y-6">
               {card ? <Description card={card} /> : <Description.Skeleton />}
+              <Tasks.Skeleton />
+              {card ? <Tasks tasks={card.tasks} /> : <Tasks.Skeleton />}
               {auditLogs ? (
                 <Activity auditLogs={auditLogs} />
               ) : (
