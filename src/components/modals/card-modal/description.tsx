@@ -25,7 +25,7 @@ export const Description = ({ card }: DescriptionProps) => {
   const formRef = useRef<ElementRef<'form'>>(null)
   const textareaRef = useRef<ElementRef<'textarea'>>(null)
 
-  const { execute, fieldErrors } = useAction(updateCard, {
+  const { execute, fieldErrors, reset } = useAction(updateCard, {
     onSuccess: (card) => {
       queryClient.invalidateQueries({
         queryKey: ['card', card.id],
@@ -48,6 +48,7 @@ export const Description = ({ card }: DescriptionProps) => {
 
   const disableEditing = () => {
     setIsEditing(false)
+    reset()
   }
 
   const onKeyDown = (e: KeyboardEvent) => {
