@@ -26,6 +26,7 @@ export async function GET(req: NextRequest, { params }: { params: Params }) {
       },
       include: {
         list: true,
+        tasks: true,
       },
     })
 
