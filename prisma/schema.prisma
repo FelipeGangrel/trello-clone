@@ -75,6 +75,7 @@ enum ENTITY_TYPE {
   BOARD
   LIST
   CARD
+  TASK
 }
 
 model AuditLog {
