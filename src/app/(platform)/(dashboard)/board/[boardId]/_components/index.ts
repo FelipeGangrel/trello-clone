@@ -1,2 +1,2 @@
-export * from './board-lists'
 export * from './board-navbar'
+export * from './board-view'

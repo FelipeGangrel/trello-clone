@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation'
 import { db } from '@/lib/db'
 import { frontend } from '@/lib/routes'
 
-import { BoardLists } from './_components'
+import { BoardView } from './_components'
 
 type BoardPageProps = {
   params: {
@@ -40,7 +40,7 @@ const BoardPage = async ({ params }: BoardPageProps) => {
 
   return (
     <div className="h-full overflow-x-auto p-4">
-      <BoardLists boardId={params.boardId} lists={lists} />
+      <BoardView boardId={params.boardId} lists={lists} />
     </div>
   )
 }

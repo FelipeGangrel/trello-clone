@@ -7,7 +7,7 @@ import { useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 import { ListWithCards } from '@/types/db'
 
-import { CardItem } from './card-item'
+import { Card } from './card'
 import { CreateCardForm } from './create-card-form'
 import { ListHeader } from './list-header'
 
@@ -16,7 +16,7 @@ type ListItemProps = {
   list: ListWithCards
 }
 
-export const ListItem = ({ index, list }: ListItemProps) => {
+export const List = ({ index, list }: ListItemProps) => {
   const textareaRef = useRef<ElementRef<'textarea'>>(null)
 
   const [isEditing, setIsEditing] = useState(false)
@@ -59,7 +59,7 @@ export const ListItem = ({ index, list }: ListItemProps) => {
                   )}
                 >
                   {list.cards.map((card, index) => (
-                    <CardItem key={card.id} index={index} card={card} />
+                    <Card key={card.id} index={index} card={card} />
                   ))}
                   {provided.placeholder}
                 </ol>

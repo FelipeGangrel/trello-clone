@@ -13,9 +13,9 @@ import { useAction } from '@/hooks'
 import { ListWithCards } from '@/types/db'
 
 import { CreateListForm } from './create-list-form'
-import { ListItem } from './list-item'
+import { List } from './list'
 
-type ListContainer = {
+type BoardViewProps = {
   boardId: string
   lists: ListWithCards[]
 }
@@ -28,7 +28,7 @@ function reorder<T>(list: T[], startIndex: number, endIndex: number): T[] {
   return result
 }
 
-export const BoardLists = ({ boardId, lists }: ListContainer) => {
+export const BoardView = ({ boardId, lists }: BoardViewProps) => {
   const [orderedLists, setOrderedLists] = useState(lists)
 
   const { execute: executeReorderLists } = useAction(updateListsOrder, {
@@ -163,7 +163,9 @@ export const BoardLists = ({ boardId, lists }: ListContainer) => {
             className="flex h-full gap-x-3"
           >
             {orderedLists.map((list, index) => (
-              <ListItem key={list.id} index={index} list={list} />
+              <ul key={list.id} className="h-full w-72 shrink-0 select-none">
+                <List index={index} list={list} />
+              </ul>
             ))}
             {provided.placeholder}
             <CreateListForm />

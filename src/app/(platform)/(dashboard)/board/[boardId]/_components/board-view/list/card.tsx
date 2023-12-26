@@ -9,7 +9,7 @@ type CardItemProps = {
   card: CardModel
 }
 
-export const CardItem = ({ index, card }: CardItemProps) => {
+export const Card = ({ index, card }: CardItemProps) => {
   const openModal = useCardModal((state) => state.onOpen)
 
   return (
