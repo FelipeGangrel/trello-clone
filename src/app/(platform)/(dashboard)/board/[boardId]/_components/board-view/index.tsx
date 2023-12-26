@@ -163,9 +163,7 @@ export const BoardView = ({ boardId, lists }: BoardViewProps) => {
             className="flex h-full gap-x-3"
           >
             {orderedLists.map((list, index) => (
-              <ul key={list.id} className="h-full w-72 shrink-0 select-none">
-                <List index={index} list={list} />
-              </ul>
+              <List key={list.id} index={index} list={list} />
             ))}
             {provided.placeholder}
             <CreateListForm />
