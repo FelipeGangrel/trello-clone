@@ -5,10 +5,10 @@ import { toast } from 'sonner'
 import { copyCard, deleteCard } from '@/actions'
 import { Button, Skeleton } from '@/components/ui'
 import { useAction, useCardModal } from '@/hooks'
-import type { CardWithList } from '@/types/db'
+import type { CardWithRelations } from '@/types/db'
 
 type ActionsProps = {
-  card: CardWithList
+  card: CardWithRelations
 }
 
 export const Actions = ({ card }: ActionsProps) => {

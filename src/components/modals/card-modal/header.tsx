@@ -11,10 +11,10 @@ import { updateCard } from '@/actions'
 import { FormField } from '@/components/form'
 import { Skeleton } from '@/components/ui'
 import { useAction } from '@/hooks'
-import type { CardWithList } from '@/types/db'
+import type { CardWithRelations } from '@/types/db'
 
 type HeaderProps = {
-  card: CardWithList
+  card: CardWithRelations
 }
 
 export const Header = ({ card }: HeaderProps) => {

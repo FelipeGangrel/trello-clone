@@ -10,10 +10,10 @@ import { updateCard } from '@/actions'
 import { FormTextarea, SubmitButton } from '@/components/form'
 import { Button, Skeleton } from '@/components/ui'
 import { useAction } from '@/hooks'
-import type { CardWithList } from '@/types/db'
+import type { CardWithRelations } from '@/types/db'
 
 type DescriptionProps = {
-  card: CardWithList
+  card: CardWithRelations
 }
 
 export const Description = ({ card }: DescriptionProps) => {
