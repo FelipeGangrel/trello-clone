@@ -56,7 +56,7 @@ export const CreateBoardPopover = ({
         align={align}
         side={side}
         sideOffset={sideOffset}
-        className="w-80 pt-3"
+        className="w-96 pt-3"
       >
         <div className="pb-4 text-center text-sm font-medium text-neutral-600">
           Create board

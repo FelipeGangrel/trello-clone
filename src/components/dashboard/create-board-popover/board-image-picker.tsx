@@ -65,7 +65,7 @@ export const BoardImagePicker = ({ id, errors }: BoardImagePickerProps) => {
           <div
             key={image.id}
             className={cn(
-              'group relative aspect-video cursor-pointer rounded-sm bg-muted transition hover:opacity-75',
+              'group relative aspect-square cursor-pointer rounded-sm bg-muted transition hover:opacity-75',
               pending && 'cursor-auto opacity-50 hover:opacity-50'
             )}
             onClick={() => {
